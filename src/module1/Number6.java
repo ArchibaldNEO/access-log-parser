@@ -1,18 +1,19 @@
+package module1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Number4 {
+public class Number6 {
   public static void main(String[] args) throws IOException {
-    System.out.print("Введите число: ");
+    System.out.print("Введите символ: ");
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     String s = bufferedReader.readLine();
-    int d = Integer.parseInt(s);
 
-    System.out.println("Результат: " + isPositive(d));
+    System.out.println("Результат: " + isUpperCase(s.charAt(0)));
   }
 
-  public static boolean isPositive(int x) {
-    return x > 0;
+  public static boolean isUpperCase(char x) {
+    return String.valueOf(x).equals(String.valueOf(x).toUpperCase());
   }
 }

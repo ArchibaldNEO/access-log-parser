@@ -1,3 +1,5 @@
+package module1;
+
 import java.io.IOException;
 
 public class Number10 {
