@@ -10,7 +10,7 @@ public class Number3 {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     String s = bufferedReader.readLine();
 
-    System.out.println("Код символа ASCII " + " = " + charToNum(s.toCharArray()[0]));
+    System.out.println("Результат" + ": " + (char) charToNum(s.toCharArray()[0]));
   }
 
   public static int charToNum(char x) {
