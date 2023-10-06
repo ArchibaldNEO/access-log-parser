@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Array1 {
+public class Array2 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -28,13 +28,11 @@ public class Array1 {
   }
 
   public static int findFirst(int[] arr, int x) {
-    int first = 0;
+    int first = -1;
     for (int i = 0; i < arr.length; i++) {
       if (arr[i] == x) {
         first = i;
-        break;
-      } else
-        first = -1;
+      }
     }
     return first;
   }
