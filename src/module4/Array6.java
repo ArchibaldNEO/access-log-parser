@@ -18,17 +18,22 @@ public class Array6 {
       String s2 = bufferedReader.readLine();
       array[i] = Integer.parseInt(s2);
     }
-    System.out.println("Введенный массив" + Arrays.toString(array));
+    System.out.println("Введенный массив " + Arrays.toString(array));
 
     reverse(array);
   }
 
   public static void reverse(int[] arr) {
-    int[] arr1 = new int[arr.length];
-    for (int i = arr.length - 1; i >= 0; i--) {
-      arr1[arr.length - i - 1] = arr[i];
-    }
-    System.out.println("Перевернутый массив" + Arrays.toString(arr1));
-  }
+    int temp;
+    int n = arr.length;
 
+    for (int i = 0; i < n / 2; i++) {
+      temp = arr[n - i - 1];
+      arr[n - i - 1] = arr[i];
+      arr[i] = temp;
+    }
+
+    System.out.println("Перевернутый массив "+Arrays.toString(arr));
+  }
 }
+
