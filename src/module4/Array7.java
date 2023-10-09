@@ -20,10 +20,10 @@ public class Array7 {
     }
     System.out.println("Введенный массив" + Arrays.toString(array));
 
-    reverse(array);
+    reverseBack(array);
   }
 
-  public static void reverse(int[] arr) {
+  public static void reverseBack(int[] arr) {
     int[] arr1 = new int[arr.length];
     for (int i = arr.length - 1; i >= 0; i--) {
       arr1[arr.length - i - 1] = arr[i];
