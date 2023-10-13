@@ -25,12 +25,14 @@ public class Array3 {
 
   public static int maxAbs(int[] arr) {
     int max = Integer.MIN_VALUE;
+    int max1 = 0;
     for (int j : arr) {
-      int abs = Math.abs(j);
-      if (abs >= max)
-        max = abs;
+      if (Math.abs(j) >= max) {
+        max = Math.abs(j);
+        max1 = j;
+      }
     }
-    return max;
+    return max1;
   }
 
 }
