@@ -18,17 +18,17 @@ public class Array7 {
       String s2 = bufferedReader.readLine();
       array[i] = Integer.parseInt(s2);
     }
-    System.out.println("Введенный массив" + Arrays.toString(array));
+    System.out.println("Введенный массив: " + Arrays.toString(array));
 
-    reverseBack(array);
+    System.out.println("Перевернутый массив: " + Arrays.toString(reverseBack(array)));
   }
 
-  public static void reverseBack(int[] arr) {
+  public static int[] reverseBack(int[] arr) {
     int[] arr1 = new int[arr.length];
     for (int i = arr.length - 1; i >= 0; i--) {
       arr1[arr.length - i - 1] = arr[i];
     }
-    System.out.println("Перевернутый массив" + Arrays.toString(arr1));
+    return arr1;
   }
 
 }
