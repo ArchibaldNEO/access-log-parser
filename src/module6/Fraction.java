@@ -21,45 +21,37 @@ public class Fraction {
     return "числитель/знаменатель" + " = " + numerator + "/" + denominator;
   }
 
-  public int getNumerator() {
-    return numerator;
-  }
-
-  public int getDenominator() {
-    return denominator;
-  }
-
   public Fraction sum(Fraction a) {
-    int gcd = gcd(this.getDenominator(), a.getDenominator());
-    int nok = (this.getDenominator() * a.getDenominator() / gcd);
+    int gcd = gcd(this.denominator, a.denominator);
+    int nok = (this.denominator * a.denominator / gcd);
 
-    if (this.getDenominator() == a.getDenominator()) {
-      return new Fraction(this.getNumerator() + a.getNumerator(), a.getDenominator());
+    if (this.denominator == a.denominator) {
+      return new Fraction(this.numerator + a.numerator, a.denominator);
     } else {
-      return new Fraction(this.getNumerator() * a.getDenominator() + a.getNumerator() * this.getDenominator(), nok);
+      return new Fraction(this.numerator * a.denominator + a.numerator * this.denominator, nok);
     }
   }
 
   public Fraction minus(Fraction a) {
-    int gcd = gcd(this.getDenominator(), a.getDenominator());
-    int nok = (this.getDenominator() * a.getDenominator() / gcd);
+    int gcd = gcd(this.denominator, a.denominator);
+    int nok = (this.denominator * a.denominator / gcd);
 
-    if (this.getDenominator() == a.getDenominator()) {
-      return new Fraction(this.getNumerator() - a.getNumerator(), a.getDenominator());
+    if (this.denominator == a.denominator) {
+      return new Fraction(this.numerator - a.numerator, a.denominator);
     } else {
-      return new Fraction(this.getNumerator() - a.getDenominator() + a.getNumerator() * this.getDenominator(), nok);
+      return new Fraction(this.numerator - a.denominator + a.numerator * this.denominator, nok);
     }
   }
 
   public Fraction minus(int n) {
     Fraction a = new Fraction(n, 1);
-    int gcd = gcd(this.getDenominator(), a.getDenominator());
-    int nok = (this.getDenominator() * a.getDenominator() / gcd);
+    int gcd = gcd(this.denominator, a.denominator);
+    int nok = (this.denominator * a.denominator / gcd);
 
-    if (this.getDenominator() == a.getDenominator()) {
-      return new Fraction(this.getNumerator() - a.getNumerator(), a.getDenominator());
+    if (this.denominator == a.denominator) {
+      return new Fraction(this.numerator - a.numerator, a.denominator);
     } else {
-      return new Fraction(this.getNumerator() * a.getDenominator() - a.getNumerator() * this.getDenominator(), nok);
+      return new Fraction(this.numerator * a.denominator- a.numerator * this.denominator, nok);
     }
   }
 
