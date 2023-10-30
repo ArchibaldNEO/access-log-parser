@@ -1,5 +1,6 @@
 package module6;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Student {
@@ -8,7 +9,12 @@ public class Student {
 
   public Student(String name, int[] assessment) {
     this.name = name;
-    setAssessment(assessment);
+    for (int i : assessment) {
+      if (i >= 2 && i <= 5)
+        this.assessment = assessment;
+      else
+        throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
+    }
   }
 
   public Student(String name) {
@@ -19,14 +25,16 @@ public class Student {
     return assessment;
   }
 
-  public void setAssessment(int[] assessment) {
-    for (int j : assessment) {
-      if (j >= 2 && j <= 5)
-        this.assessment = assessment;
-      else
-        throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
+  public void setAssessment(int n) {
+    if (n >= 2 && n <= 5) {
+      int[] array = Arrays.copyOf(assessment, assessment.length + 1);
+      array[assessment.length] = n;
+      this.assessment = array;
+    } else {
+      throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
     }
   }
+
 
   @Override
   public String toString() {

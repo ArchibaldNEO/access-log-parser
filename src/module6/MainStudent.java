@@ -10,7 +10,7 @@ public class MainStudent {
     System.out.println(student1);
     System.out.println(student2);
 
-    student2.setAssessment(new int[]{2});
+    student2.setAssessment(2);
     System.out.println(student2);
 
   }
