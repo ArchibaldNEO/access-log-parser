@@ -13,5 +13,14 @@ public class MainStudent {
     student2.setAssessment(2);
     System.out.println(student2);
 
+    student2.setAssessment(new int[]{3,4,5});
+    System.out.println(student2);
+
+    student1.setAssessment(2);
+    System.out.println(student1);
+
+    student1.setAssessment(new int[]{3,4,5});
+    System.out.println(student1);
+
   }
 }
