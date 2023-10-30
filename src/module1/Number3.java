@@ -9,8 +9,9 @@ public class Number3 {
     System.out.print("Введите символ: ");
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     String s = bufferedReader.readLine();
+    char c = s.charAt(0);
 
-    System.out.println("Результат" + ": " + (char) charToNum(s.toCharArray()[0]));
+    System.out.println("Результат" + ": " + Character.getNumericValue(charToNum(c)));
   }
 
   public static int charToNum(char x) {
