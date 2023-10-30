@@ -10,17 +10,16 @@ public class MainStudent {
     System.out.println(student1);
     System.out.println(student2);
 
-    student2.setAssessment(2);
-    System.out.println(student2);
 
-    student2.setAssessment(new int[]{3,4,5});
+    student2.setAssessment(new int[]{5,4,3});
     System.out.println(student2);
-
-    student1.setAssessment(2);
-    System.out.println(student1);
 
     student1.setAssessment(new int[]{3,4,5});
     System.out.println(student1);
+    student1.setAssessment(new int[]{5,3,4});
+    System.out.println(student1);
+
+    System.out.println(Arrays.toString(student2.getAssessment()));
 
   }
 }

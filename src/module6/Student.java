@@ -6,18 +6,13 @@ public class Student {
   private final String name;
   private int[] assessment = new int[0];
 
-  public Student(String name, int[] assessment) {
-    this.name = name;
-    for (int i : assessment) {
-      if (i >= 2 && i <= 5)
-        this.assessment = assessment;
-      else
-        throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
-    }
-  }
-
   public Student(String name) {
     this.name = name;
+  }
+
+  public Student(String name, int[] assessment) {
+    this.name = name;
+    setAssessment(assessment);
   }
 
   public int[] getAssessment() {
@@ -25,30 +20,18 @@ public class Student {
   }
 
   public void setAssessment(int[] assessment) {
-    int n = assessment.length;
-    int[] array = Arrays.copyOf(this.assessment, this.assessment.length + n);
-    for (int i = 0; i < n; i++) {
+    int[] array = Arrays.copyOf(this.assessment, this.assessment.length + assessment.length);
+
+    for (int i = 0; i < assessment.length; i++) {
       if (assessment[i] >= 2 && assessment[i] <= 5) {
         array[this.assessment.length + i] = assessment[i];
       } else {
         throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
       }
     }
-    //System.arraycopy(assessment, 0, array, this.assessment.length + 0, n);
-    this.assessment = Arrays.copyOf(array, this.assessment.length + n);
-  }
 
-  public void setAssessment(int n) {
-    if (n >= 2 && n <= 5) {
-      System.out.println(this.assessment.length);
-      int[] array = Arrays.copyOf(this.assessment, assessment.length + 1);
-      array[assessment.length] = n;
-      this.assessment = array;
-    } else {
-      throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
-    }
+    this.assessment = Arrays.copyOf(array, this.assessment.length + assessment.length);
   }
-
 
   @Override
   public String toString() {
