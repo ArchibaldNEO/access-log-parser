@@ -19,7 +19,10 @@ public class MainStudent {
     student1.setAssessment(new int[]{5,3,4});
     System.out.println(student1);
 
+    System.out.println();
     System.out.println(Arrays.toString(student2.getAssessment()));
+
+
 
   }
 }

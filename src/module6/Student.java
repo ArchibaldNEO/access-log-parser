@@ -16,7 +16,8 @@ public class Student {
   }
 
   public int[] getAssessment() {
-    return assessment;
+    Student student = new Student(this.name, this.assessment);
+    return student.assessment;
   }
 
   public void setAssessment(int[] assessment) {
