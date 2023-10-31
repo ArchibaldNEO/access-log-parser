@@ -12,7 +12,13 @@ public class Student {
 
   public Student(String name, int[] assessment) {
     this.name = name;
-    setAssessment(assessment);
+    for (int j : assessment) {
+      if (j >= 2 && j <= 5) {
+        this.assessment = assessment;
+      } else {
+        throw new IllegalArgumentException("Оценка принимает значения только 2 до 5");
+      }
+    }
   }
 
   public int[] getAssessment() {
@@ -20,7 +26,7 @@ public class Student {
     return student.assessment;
   }
 
-  public void setAssessment(int[] assessment) {
+  public void addAssessment(int[] assessment) {
     int[] array = Arrays.copyOf(this.assessment, this.assessment.length + assessment.length);
 
     for (int i = 0; i < assessment.length; i++) {
