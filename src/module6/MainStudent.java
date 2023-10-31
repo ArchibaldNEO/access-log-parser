@@ -11,12 +11,12 @@ public class MainStudent {
     System.out.println(student2);
 
 
-    student2.addAssessment(new int[]{5,4,3});
+    student2.addAssessments(new int[]{5,4,3});
     System.out.println(student2);
 
-    student1.addAssessment(new int[]{3,4,5});
+    student1.addAssessments(new int[]{3,4,5});
     System.out.println(student1);
-    student1.addAssessment(new int[]{5,3,4});
+    student1.addAssessments(new int[]{5,3,4});
     System.out.println(student1);
 
     System.out.println();

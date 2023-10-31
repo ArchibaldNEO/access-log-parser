@@ -26,7 +26,7 @@ public class Student {
     return student.assessment;
   }
 
-  public void addAssessment(int[] assessment) {
+  public void addAssessments(int[] assessment) {
     int[] array = Arrays.copyOf(this.assessment, this.assessment.length + assessment.length);
 
     for (int i = 0; i < assessment.length; i++) {
