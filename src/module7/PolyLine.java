@@ -1,9 +1,9 @@
 package module7;
 
-public class PolyPoint {
+public class PolyLine {
   Point[] points;
 
-  public PolyPoint(Point[] points) {
+  public PolyLine(Point[] points) {
     this.points = points;
   }
 
