@@ -25,12 +25,17 @@ public class Fraction {
     int gcd = gcd(this.denominator, a.denominator);
     int nok = (this.denominator * a.denominator / gcd);
 
+
     if (this.denominator == a.denominator) {
       return new Fraction(this.numerator + a.numerator, a.denominator);
-    } else {
+    } else if (this.denominator / nok == 1) {
+      return new Fraction(this.numerator + this.denominator / a.denominator * a.numerator, nok);
+    } else if (a.denominator / nok == 1) {
+      return new Fraction(a.denominator / this.denominator * this.numerator + a.numerator, nok);
+    } else
       return new Fraction(this.numerator * a.denominator + a.numerator * this.denominator, nok);
-    }
   }
+
 
   public Fraction minus(Fraction a) {
     int gcd = gcd(this.denominator, a.denominator);
@@ -51,7 +56,7 @@ public class Fraction {
     if (this.denominator == a.denominator) {
       return new Fraction(this.numerator - a.numerator, a.denominator);
     } else {
-      return new Fraction(this.numerator * a.denominator- a.numerator * this.denominator, nok);
+      return new Fraction(this.numerator * a.denominator - a.numerator * this.denominator, nok);
     }
   }
 
