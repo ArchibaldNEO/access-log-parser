@@ -22,18 +22,13 @@ public class Fraction {
   }
 
   public Fraction sum(Fraction a) {
-    int gcd = gcd(this.denominator, a.denominator);
-    int nok = (this.denominator * a.denominator / gcd);
+    int x1 = this.numerator * a.denominator;
+    int y1 = this.denominator * a.denominator;
+    int x2 = a.numerator * this.denominator;
+    int y2 = a.denominator * this.denominator;
 
+    return new Fraction(x1 + x2, y1 + y2);
 
-    if (this.denominator == a.denominator) {
-      return new Fraction(this.numerator + a.numerator, a.denominator);
-    } else if (this.denominator / nok == 1) {
-      return new Fraction(this.numerator + this.denominator / a.denominator * a.numerator, nok);
-    } else if (a.denominator / nok == 1) {
-      return new Fraction(a.denominator / this.denominator * this.numerator + a.numerator, nok);
-    } else
-      return new Fraction(this.numerator * a.denominator + a.numerator * this.denominator, nok);
   }
 
 
