@@ -16,9 +16,5 @@ public class MainTest {
     System.out.println(polymorphism2);
     System.out.println(polymorphism2.lenght1());*/
 
-    Polymorphism2 polymorphism2 = new Polymorphism2(new Point[]{new Point(1, 5), new Point(2, 8),
-            new Point(5, 3), new Point(8, 9)});
-
-
   }
 }
