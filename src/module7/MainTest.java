@@ -23,7 +23,7 @@ public class MainTest {
     System.out.println(polymorphism_2.length());
     System.out.println(polymorphism_3.length());
     System.out.println(polymorphism_4.length());
-    System.out.println(polymorphism_1.length(new Polymorphism2[]{polymorphism_1, polymorphism_2, polymorphism_3, polymorphism_3, polymorphism_4}));
+    System.out.println(polymorphism_1.length(new Polymorphism2[]{polymorphism_1, polymorphism_2, polymorphism_3, polymorphism_4}));
 
   }
 }

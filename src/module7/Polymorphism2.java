@@ -2,22 +2,18 @@ package module7;
 
 import module5.ex1.Point;
 import module5.ex2.Line;
+import module5.ex3.BrokenLine;
 
-public class Polymorphism2 extends Line {
-
-  public Polymorphism2(Point begin, Point end) {
-    super(begin, end);
+public class Polymorphism2 extends BrokenLine {
+  public Polymorphism2(Point[] array) {
+    super(array);
   }
 
-  public Polymorphism2(int x1, int y1, int x2, int y2) {
-    super(x1, y1, x2, y2);
-  }
-
-  public double length(Line[] line) {
-    double l = 0;
-    for (Line value : line) {
-      l = l + value.length();
+  public double lenght(BrokenLine[] brokenLines) {
+    double lenght = 0;
+    for (int i = 0; i < brokenLines.length - 1; i++) {
+      lenght = lenght + brokenLines[i].lenght();
     }
-    return l;
+    return lenght;
   }
 }
