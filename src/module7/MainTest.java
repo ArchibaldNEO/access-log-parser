@@ -16,5 +16,10 @@ public class MainTest {
     System.out.println(polymorphism2);
     System.out.println(polymorphism2.lenght1());*/
 
+    Fraction fraction = new Fraction(3,5);
+    System.out.println(fraction.intValue());
+    System.out.println(fraction.longValue());
+    System.out.println(fraction.floatValue());
+    System.out.println(fraction.doubleValue());
   }
 }
