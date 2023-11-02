@@ -1,7 +1,8 @@
 package module7;
 
-
-public class Polymorphism3 {
-
+public interface Polymorphism3 {
+  default double lenght() {
+    return 0;
   }
+}
 

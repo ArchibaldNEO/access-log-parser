@@ -1,8 +1,9 @@
 package module5.ex2;
 
 import module5.ex1.Point;
+import module7.Polymorphism3;
 
-public class Line {
+public class Line implements Polymorphism3 {
   Point begin;
   Point end;
 
@@ -21,9 +22,9 @@ public class Line {
     return "Линия от " + begin + " до " + end;
   }
 
+
   public double length() {
     return Math.sqrt(Math.pow((end.getX() - begin.getX()), 2) + Math.pow((end.getY() - begin.getY()), 2));
   }
-
 
 }

@@ -2,10 +2,11 @@ package module5.ex3;
 
 import module5.ex1.Point;
 import module5.ex2.Line;
+import module7.Polymorphism3;
 
 import java.util.Arrays;
 
-public class BrokenLine {
+public class BrokenLine implements Polymorphism3 {
   Point[] array;
 
   public BrokenLine(Point[] array) {
