@@ -1,7 +1,7 @@
 package ru.сourses.oop.line;
 
 import ru.сourses.oop.point.Point;
-import module7.Polymorphism3;
+import ru.сourses.oop.polymorphisms.Polymorphism3;
 
 public class Line implements Polymorphism3 {
   Point begin;

@@ -1,4 +1,4 @@
-package module7;
+package ru.сourses.oop.polymorphisms;
 
 public class Point {
   int x, y;

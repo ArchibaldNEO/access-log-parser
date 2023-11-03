@@ -1,4 +1,4 @@
-package module7;
+package ru.сourses.oop.polymorphisms;
 
 import ru.сourses.oop.point.Point;
 
