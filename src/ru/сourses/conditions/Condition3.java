@@ -1,10 +1,10 @@
-package module2;
+package ru.сourses.conditions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IF4 {
+public class Condition3 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -16,15 +16,13 @@ public class IF4 {
     String s2 = bufferedReader.readLine();
     int b = Integer.parseInt(s2);
 
-    System.out.println("Результат: " + makeDecision(a, b));
+    System.out.println("Результат: " + max(a, b));
   }
 
-  public static String makeDecision(int x, int y) {
-    if (x > y)
-      return x + " > " + y;
-    else if (x < y)
-      return x + " < " + y;
+  public static int max(int x, int y) {
+    if (x >= y)
+      return x;
     else
-      return x + " == " + y;
+      return y;
   }
 }

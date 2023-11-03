@@ -1,10 +1,10 @@
-package module2;
+package ru.сourses.conditions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IF8 {
+public class Condition7 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -12,13 +12,18 @@ public class IF8 {
     String s1 = bufferedReader.readLine();
     int a = Integer.parseInt(s1);
 
-    System.out.println("Результат: " + is35(a));
+    System.out.print("Введите число y: ");
+    String s2 = bufferedReader.readLine();
+    int b = Integer.parseInt(s2);
+
+    System.out.println("Результат: " + sum2(a, b));
   }
 
-  public static boolean is35(int x) {
-    if ((x % 3 == 0) && (x % 5 == 0))
-      return false;
+  public static int sum2(int x, int y) {
+    int sum = x + y;
+    if (10 <= sum && sum <= 19)
+      return 20;
     else
-      return (x % 3 == 0) || (x % 5 == 0);
+      return sum;
   }
 }

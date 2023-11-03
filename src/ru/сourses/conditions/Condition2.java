@@ -1,10 +1,10 @@
-package module2;
+package ru.сourses.conditions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IF9 {
+public class Condition2 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -16,10 +16,13 @@ public class IF9 {
     String s2 = bufferedReader.readLine();
     int b = Integer.parseInt(s2);
 
-    System.out.println("Результат: " + magic6(a, b));
+    System.out.println("Результат: " + safeDiv(a, b));
   }
 
-  public static boolean magic6(int x, int y) {
-    return (x == 6) || (y == 6) || (x + y) == 6 || (x - y) == 6 || (y - x == 6);
+  public static int safeDiv(int x, int y) {
+    if (y == 0)
+      return 0;
+    else
+      return x / y;
   }
 }

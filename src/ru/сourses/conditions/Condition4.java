@@ -1,10 +1,10 @@
-package module2;
+package ru.сourses.conditions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IF7 {
+public class Condition4 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -16,14 +16,15 @@ public class IF7 {
     String s2 = bufferedReader.readLine();
     int b = Integer.parseInt(s2);
 
-    System.out.println("Результат: " + sum2(a, b));
+    System.out.println("Результат: " + makeDecision(a, b));
   }
 
-  public static int sum2(int x, int y) {
-    int sum = x + y;
-    if (10 <= sum && sum <= 19)
-      return 20;
+  public static String makeDecision(int x, int y) {
+    if (x > y)
+      return x + " > " + y;
+    else if (x < y)
+      return x + " < " + y;
     else
-      return sum;
+      return x + " == " + y;
   }
 }
