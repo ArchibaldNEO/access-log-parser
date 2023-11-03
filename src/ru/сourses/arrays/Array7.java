@@ -1,11 +1,11 @@
-package module4;
+package ru.сourses.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Array4 {
+public class Array7 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,18 +18,17 @@ public class Array4 {
       String s2 = bufferedReader.readLine();
       array[i] = Integer.parseInt(s2);
     }
-    System.out.println(Arrays.toString(array));
+    System.out.println("Введенный массив: " + Arrays.toString(array));
 
-    System.out.println("Результат: " + maxAbs(array));
+    System.out.println("Перевернутый массив: " + Arrays.toString(reverseBack(array)));
   }
 
-  public static int maxAbs(int[] arr) {
-    int positive = 0;
-    for (int j : arr) {
-      if (j > 0)
-        positive++;
+  public static int[] reverseBack(int[] arr) {
+    int[] arr1 = new int[arr.length];
+    for (int i = arr.length - 1; i >= 0; i--) {
+      arr1[arr.length - i - 1] = arr[i];
     }
-    return positive;
+    return arr1;
   }
 
 }

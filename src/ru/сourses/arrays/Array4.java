@@ -1,11 +1,11 @@
-package module4;
+package ru.сourses.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Array2 {
+public class Array4 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -20,20 +20,16 @@ public class Array2 {
     }
     System.out.println(Arrays.toString(array));
 
-    System.out.print("x: ");
-    String s3 = bufferedReader.readLine();
-    int x = Integer.parseInt(s3);
-
-    System.out.println("Результат: " + findFirst(array, x));
+    System.out.println("Результат: " + maxAbs(array));
   }
 
-  public static int findFirst(int[] arr, int x) {
-    int first = -1;
-    for (int i = 0; i < arr.length; i++) {
-      if (arr[i] == x) {
-        first = i;
-      }
+  public static int maxAbs(int[] arr) {
+    int positive = 0;
+    for (int j : arr) {
+      if (j > 0)
+        positive++;
     }
-    return first;
+    return positive;
   }
+
 }

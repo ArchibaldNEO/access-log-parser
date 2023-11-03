@@ -1,4 +1,4 @@
-package module4;
+package ru.сourses.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;

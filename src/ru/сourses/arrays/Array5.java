@@ -1,11 +1,11 @@
-package module4;
+package ru.сourses.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Array7 {
+public class Array5 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,17 +18,18 @@ public class Array7 {
       String s2 = bufferedReader.readLine();
       array[i] = Integer.parseInt(s2);
     }
-    System.out.println("Введенный массив: " + Arrays.toString(array));
+    System.out.println("Введенный массив" + Arrays.toString(array));
 
-    System.out.println("Перевернутый массив: " + Arrays.toString(reverseBack(array)));
+    System.out.println("Результат: " + palindrom(array));
   }
 
-  public static int[] reverseBack(int[] arr) {
+  public static boolean palindrom(int[] arr) {
     int[] arr1 = new int[arr.length];
     for (int i = arr.length - 1; i >= 0; i--) {
       arr1[arr.length - i - 1] = arr[i];
     }
-    return arr1;
+    System.out.println("Перевернутый массив" + Arrays.toString(arr1));
+    return Arrays.equals(arr, arr1);
   }
 
 }

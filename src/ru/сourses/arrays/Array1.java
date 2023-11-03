@@ -1,11 +1,11 @@
-package module4;
+package ru.сourses.arrays;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Array6 {
+public class Array1 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -18,22 +18,24 @@ public class Array6 {
       String s2 = bufferedReader.readLine();
       array[i] = Integer.parseInt(s2);
     }
-    System.out.println("Введенный массив " + Arrays.toString(array));
+    System.out.println(Arrays.toString(array));
 
-    reverse(array);
+    System.out.print("x: ");
+    String s3 = bufferedReader.readLine();
+    int x = Integer.parseInt(s3);
+
+    System.out.println("Результат: " + findFirst(array, x));
   }
 
-  public static void reverse(int[] arr) {
-    int temp;
-    int n = arr.length;
-
-    for (int i = 0; i < n / 2; i++) {
-      temp = arr[n - i - 1];
-      arr[n - i - 1] = arr[i];
-      arr[i] = temp;
+  public static int findFirst(int[] arr, int x) {
+    int first = 0;
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == x) {
+        first = i;
+        break;
+      } else
+        first = -1;
     }
-
-    System.out.println("Перевернутый массив "+Arrays.toString(arr));
+    return first;
   }
 }
-
