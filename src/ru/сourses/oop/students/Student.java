@@ -1,4 +1,4 @@
-package module6;
+package ru.сourses.oop.students;
 
 import java.util.Arrays;
 

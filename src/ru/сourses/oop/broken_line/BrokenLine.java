@@ -1,7 +1,7 @@
-package module5.ex3;
+package ru.сourses.oop.broken_line;
 
-import module5.ex1.Point;
-import module5.ex2.Line;
+import ru.сourses.oop.point.Point;
+import ru.сourses.oop.line.Line;
 import module7.Polymorphism3;
 
 import java.util.Arrays;

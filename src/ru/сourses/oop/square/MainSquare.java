@@ -1,4 +1,6 @@
-package module6;
+package ru.сourses.oop.square;
+
+import ru.сourses.oop.square.Square;
 
 import java.io.IOException;
 

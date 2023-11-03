@@ -1,4 +1,4 @@
-package module5.ex1;
+package ru.сourses.oop.point;
 
 public class Point {
   int X, Y;

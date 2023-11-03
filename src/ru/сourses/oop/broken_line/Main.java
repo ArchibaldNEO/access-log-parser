@@ -1,6 +1,6 @@
-package module5.ex3;
+package ru.сourses.oop.broken_line;
 
-import module5.ex1.Point;
+import ru.сourses.oop.point.Point;
 
 import java.io.IOException;
 import java.util.Arrays;

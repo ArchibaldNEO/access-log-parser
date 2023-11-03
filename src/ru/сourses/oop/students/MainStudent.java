@@ -1,4 +1,6 @@
-package module6;
+package ru.сourses.oop.students;
+
+import ru.сourses.oop.students.Student;
 
 import java.io.IOException;
 import java.util.Arrays;

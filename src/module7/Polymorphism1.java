@@ -1,6 +1,6 @@
 package module7;
 
-import module5.ex1.Point;
+import ru.сourses.oop.point.Point;
 
 public class Polymorphism1 extends Point {
   private int Z;

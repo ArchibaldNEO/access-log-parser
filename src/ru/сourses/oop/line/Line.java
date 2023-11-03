@@ -1,6 +1,6 @@
-package module5.ex2;
+package ru.сourses.oop.line;
 
-import module5.ex1.Point;
+import ru.сourses.oop.point.Point;
 import module7.Polymorphism3;
 
 public class Line implements Polymorphism3 {

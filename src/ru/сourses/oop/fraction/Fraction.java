@@ -1,4 +1,4 @@
-package module6;
+package ru.сourses.oop.fraction;
 
 public class Fraction {
   private final int numerator;

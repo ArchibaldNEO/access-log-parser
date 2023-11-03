@@ -1,8 +1,5 @@
 package module7;
 
-import module5.ex1.Point;
-import module5.ex2.Line;
-
 import java.io.IOException;
 
 public class MainTest {

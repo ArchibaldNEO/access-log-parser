@@ -1,4 +1,6 @@
-package module6;
+package ru.сourses.oop.fraction;
+
+import ru.сourses.oop.fraction.Fraction;
 
 import java.io.IOException;
 

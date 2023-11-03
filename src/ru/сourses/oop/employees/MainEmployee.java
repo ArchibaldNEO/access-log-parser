@@ -1,4 +1,6 @@
-package module6;
+package ru.сourses.oop.employees;
+
+import ru.сourses.oop.employees.Employee;
 
 import java.io.IOException;
 

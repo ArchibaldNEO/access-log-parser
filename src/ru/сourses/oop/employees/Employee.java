@@ -1,4 +1,4 @@
-package module6;
+package ru.сourses.oop.employees;
 
 public class Employee {
   private String name;

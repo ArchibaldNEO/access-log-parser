@@ -1,4 +1,4 @@
-package module6;
+package ru.сourses.oop.square;
 
 public class Square {
   private int x;

@@ -1,4 +1,4 @@
-package module5.ex1;
+package ru.сourses.oop.point;
 
 import java.io.IOException;
 
