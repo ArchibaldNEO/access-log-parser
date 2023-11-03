@@ -1,10 +1,10 @@
-package module3;
+package ru.сourses.cycles;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class For2 {
+public class Cycle1 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -17,7 +17,7 @@ public class For2 {
 
   public static String listNums(int x) {
     String s = "";
-    for (int i = x; i >= 0; i--) {
+    for (int i = 0; i <= x; i++) {
       s = s + i + " ";
     }
     return s;

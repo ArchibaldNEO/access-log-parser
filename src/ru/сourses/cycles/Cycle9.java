@@ -1,10 +1,10 @@
-package module3;
+package ru.сourses.cycles;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class For9 {
+public class Cycle9 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 

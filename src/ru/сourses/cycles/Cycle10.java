@@ -1,10 +1,8 @@
-package module3;
+package ru.сourses.cycles;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class For10 {
+public class Cycle10 {
   public static void main(String[] args) throws IOException {
     guessGame();
   }

@@ -1,10 +1,10 @@
-package module3;
+package ru.сourses.cycles;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class For6 {
+public class Cycle8 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -12,17 +12,15 @@ public class For6 {
     String s1 = bufferedReader.readLine();
     int x = Integer.parseInt(s1);
 
-    System.out.println("Результат: " + equalNum(x));
+    leftTriangle(x);
   }
 
-  public static boolean equalNum(int x) {
-    String s = String.valueOf(x);
-    char c = s.charAt(0);
-
-    for (int i = 0; i < s.length(); i++) {
-      if (s.charAt(i) != c)
-        return false;
+  public static void leftTriangle(int x) {
+    for (int i = 0; i < x; i++) {
+      for (int j = 0; j <= i; j++) {
+        System.out.print("*");
+      }
+      System.out.println();
     }
-    return true;
   }
 }
