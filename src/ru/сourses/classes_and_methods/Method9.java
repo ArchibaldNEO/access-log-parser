@@ -1,10 +1,10 @@
-package module1;
+package ru.сourses.classes_and_methods;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Number8 {
+public class Method9 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -16,10 +16,14 @@ public class Number8 {
     String s2 = bufferedReader.readLine();
     int b = Integer.parseInt(s2);
 
-    System.out.println("Результат: " + isDivisor(a, b));
+    System.out.print("Введите с: ");
+    String s3 = bufferedReader.readLine();
+    int c = Integer.parseInt(s3);
+
+    System.out.println("Результат: " + isEqual(a, b, c));
   }
 
-  public static boolean isDivisor(int a, int b) {
-    return ((a % b == 0) || (b % a == 0));
+  public static boolean isEqual(int a, int b, int c) {
+    return (a == b && b == c);
   }
 }

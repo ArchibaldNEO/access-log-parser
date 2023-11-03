@@ -1,8 +1,8 @@
-package module1;
+package ru.сourses.classes_and_methods;
 
 import java.io.IOException;
 
-public class Number10 {
+public class Method10 {
   public static void main(String[] args) throws IOException {
     System.out.println("Результат: " + lastNumSum(lastNumSum(lastNumSum(lastNumSum(5, 11), 123), 14), 1));
   }

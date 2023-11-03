@@ -1,10 +1,10 @@
-package module1;
+package ru.сourses.classes_and_methods;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Number7 {
+public class Method7 {
   public static void main(String[] args) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 

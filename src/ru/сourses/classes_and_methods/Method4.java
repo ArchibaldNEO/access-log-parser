@@ -1,20 +1,20 @@
-package module1;
+package ru.сourses.classes_and_methods;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Number3 {
+public class Method4 {
   public static void main(String[] args) throws IOException {
-    System.out.print("Введите символ: ");
+    System.out.print("Введите число: ");
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     String s = bufferedReader.readLine();
-    char c = s.charAt(0);
+    int d = Integer.parseInt(s);
 
-    System.out.println("Результат" + ": " + Character.getNumericValue(charToNum(c)));
+    System.out.println("Результат: " + isPositive(d));
   }
 
-  public static int charToNum(char x) {
-    return x;
+  public static boolean isPositive(int x) {
+    return x > 0;
   }
 }
