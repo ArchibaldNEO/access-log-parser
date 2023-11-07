@@ -40,7 +40,7 @@ public class MainTest {
     fraction1.num = 4;
     fraction2.num = 4;
     System.out.println("equals : " + (fraction1.equals(fraction2)));
-    System.out.println(fraction3);*/
+    System.out.println(fraction3);
 
     Line line1 = new Line(new Point(3, 4), new Point(5, 0));
     Line line2 = new Line(new Point(3, 4), new Point(5, 0));
@@ -54,8 +54,23 @@ public class MainTest {
     line2.start = new Point(5,6);
     System.out.println(line2);
     System.out.println("equals : " + (line2.equals(line3)));
-    System.out.println(line3);
+    System.out.println(line3);*/
 
+
+    PolyLine polyLine1 = new PolyLine(new Point[]{new Point(1, 1), new Point(2, 2), new Point(3, 3)});
+    PolyLine polyLine2 = new PolyLine(new Point[]{new Point(1, 1), new Point(2, 2), new Point(3, 3)});
+
+    System.out.println(polyLine1.toString());
+    System.out.println(polyLine2.toString());
+
+    System.out.println("== : " + (polyLine1 == polyLine2));
+    System.out.println("equals: " + (polyLine1.equals(polyLine2)));
+
+    polyLine1.points[0] = new Point(2, 3);
+    System.out.println(polyLine1.toString());
+
+    System.out.println("== : " + (polyLine1 == polyLine2));
+    System.out.println("equals: " + (polyLine1.equals(polyLine2)));
 
 
   }

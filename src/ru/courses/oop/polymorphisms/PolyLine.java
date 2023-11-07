@@ -1,5 +1,7 @@
 package ru.courses.oop.polymorphisms;
 
+import java.util.Arrays;
+
 public class PolyLine {
   Point[] points;
 
@@ -15,5 +17,27 @@ public class PolyLine {
       sum += Math.sqrt(len1 * len1 + len2 * len2);
     }
     return sum;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    PolyLine polyLine = (PolyLine) o;
+    return Arrays.equals(points, polyLine.points);
+  }
+
+  @Override
+  public int hashCode() {
+    return Arrays.hashCode(points);
+  }
+
+  @Override
+  public String toString() {
+    return "PolyLine{" +
+            "points=" + Arrays.toString(points) +
+            '}';
   }
 }
