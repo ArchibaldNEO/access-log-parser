@@ -26,7 +26,7 @@ public class MainTest {
     System.out.println("point1.equals(point2) - " + point1.equals(point2));
     System.out.println("----------");
     System.out.println("point2 == point3 - " + (point2 == point3));
-    System.out.println("point2.equals(point3) - " + point2.equals(point3));*/
+    System.out.println("point2.equals(point3) - " + point2.equals(point3));
 
     Fraction fraction1 = new Fraction(3, 4);
     Fraction fraction2 = new Fraction(3, 4);
@@ -40,7 +40,23 @@ public class MainTest {
     fraction1.num = 4;
     fraction2.num = 4;
     System.out.println("equals : " + (fraction1.equals(fraction2)));
-    System.out.println(fraction3);
+    System.out.println(fraction3);*/
+
+    Line line1 = new Line(new Point(3, 4), new Point(5, 0));
+    Line line2 = new Line(new Point(3, 4), new Point(5, 0));
+    Line line3 = line2.clone();
+
+    System.out.println("== : " + (line1 == line2));
+    System.out.println("equals : " + (line1.equals(line2)));
+    System.out.println(line3);
+
+
+    line2.start = new Point(5,6);
+    System.out.println(line2);
+    System.out.println("equals : " + (line2.equals(line3)));
+    System.out.println(line3);
+
+
 
   }
 }

@@ -30,4 +30,12 @@ public class Point implements Cloneable {
   public Point clone() throws CloneNotSupportedException {
     return (Point) super.clone();
   }
+
+  @Override
+  public String toString() {
+    return "Point{" +
+            "x=" + x +
+            ", y=" + y +
+            '}';
+  }
 }
