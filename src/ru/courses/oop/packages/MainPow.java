@@ -1,21 +1,14 @@
-package ru.courses.oop.packages;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class MainPow {
   public static void main(String[] args) throws IOException {
-    System.out.print("Введите X: ");
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    String s1 = bufferedReader.readLine();
-
-    System.out.print("Введите Y: ");
-    String s2 = bufferedReader.readLine();
-
-
-    System.out.println("Результат возведения X в степень Y: " + new Pow().pow(s1, s2));
+    for (int i = 0; i < 1; i++) {
+      System.out.println("Результат возведения X в степень Y: " + pow(args[0], args[1]));
+    }
   }
 
+  public static int pow(String x, String y) {
+    return (int) Math.pow(Integer.parseInt(x), Integer.parseInt(y));
+  }
 }
 
