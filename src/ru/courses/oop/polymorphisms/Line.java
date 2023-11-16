@@ -27,8 +27,8 @@ public class Line implements Cloneable {
 
   @Override
   public Line clone() throws CloneNotSupportedException {
-    Line line = (Line) super.clone();
-    return line;
+    //Line line1 = (Line) super.clone();
+    return new Line((Point) super.clone(), (Point) super.clone());
 
   }
 
