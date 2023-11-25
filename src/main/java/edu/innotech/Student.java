@@ -1,4 +1,4 @@
-package main.java.inno.student;
+package edu.innotech;
 
 import java.util.ArrayList;
 import java.util.List;
