@@ -1,45 +1,20 @@
 package ru.courses.oop.employees;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Employee {
-  private String name;
-  private String title;
-  private String boss;
+  public String name;
+  public Department department;
 
   @Override
   public String toString() {
-    if (!name.equals(boss))
-      return name + " работает в отделе " + title + ", начальник которого " + boss;
-    else
-      return boss + " начальник отдела " + title;
-  }
-
-  public Employee(String name, String title, String boss) {
-    this.name = name;
-    this.title = title;
-    this.boss = boss;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getBoss() {
-    return boss;
-  }
-
-  public void setBoss(String boss) {
-    this.boss = boss;
+    if (!name.equals(department.chief.name)) {
+      return name + " работает в отделе " + department.name + ", начальник которого " + department.chief.name;
+    } else {
+      return name + " начальник отдела " + department.name;
+    }
   }
 }
