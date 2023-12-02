@@ -1,6 +1,6 @@
 package ru.courses.oop.polymorphisms;
 
-public class Polymorphism2 extends PolyLine {
+public class Polymorphism2 extends PolyLine implements Polymorphism3{
 
   public Polymorphism2(Point[] points) {
     super(points);
