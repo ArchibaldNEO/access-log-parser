@@ -1,5 +1,9 @@
 package ru.courses.oop.polymorphisms;
 
+import ru.courses.oop.broken_line.BrokenLine;
+
+import java.util.ArrayList;
+
 public class MainTest {
   public static void main(String[] args) throws Exception {
     /*Polymorphism1 polymorphism1 = new Polymorphism1(1, 24, 5);
@@ -42,7 +46,7 @@ public class MainTest {
     System.out.println("equals : " + (fraction1.equals(fraction2)));
     System.out.println(fraction3);*/
 
-    Line line1 = new Line(new Point(3, 4), new Point(5, 0));
+    /*Line line1 = new Line(new Point(3, 4), new Point(5, 0));
     Line line2 = new Line(new Point(3, 4), new Point(5, 0));
     //Line line3 = line2.clone();
     Line line3 = new Line(line2.start.clone(), line2.end.clone());
@@ -74,5 +78,24 @@ public class MainTest {
     System.out.println("equals: " + (polyLine1.equals(polyLine2)));*/
 
 
+    Polymorphism2 polymorphism2 = new Polymorphism2(new Point[]{new Point(1, 5), new Point(2, 8),
+            new Point(5, 3), new Point(8, 9)});
+    BrokenLine brokenLine = new BrokenLine(new ru.courses.oop.point.Point[]{new ru.courses.oop.point.Point(1, 5), new ru.courses.oop.point.Point(2, 8), new ru.courses.oop.point.Point(5, 3), new ru.courses.oop.point.Point(8, 9),});
+
+    ArrayList<Polymorphism3> arrayList = new ArrayList<>();
+
+    arrayList.add(polymorphism2);
+    arrayList.add(brokenLine);
+
+    method(arrayList);
+
   }
+
+  public static void method(ArrayList<Polymorphism3> polymorphism3s) {
+    for (int i = 0; i < polymorphism3s.size(); i++) {
+      System.out.println(polymorphism3s.get(i).lenght());
+    }
+  }
+
+
 }
