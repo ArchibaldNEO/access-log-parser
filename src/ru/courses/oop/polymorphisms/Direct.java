@@ -1,6 +1,6 @@
 package ru.courses.oop.polymorphisms;
 
-public interface Polymorphism3 {
+public interface Direct {
   default double lenght() {
     return 0;
   }

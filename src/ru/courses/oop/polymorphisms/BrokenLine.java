@@ -1,8 +1,7 @@
-package ru.courses.oop.broken_line;
+package ru.courses.oop.polymorphisms;
 
-import ru.courses.oop.point.Point;
 import ru.courses.oop.line.Line;
-import ru.courses.oop.polymorphisms.Direct;
+import ru.courses.oop.point.Point;
 
 import java.util.Arrays;
 

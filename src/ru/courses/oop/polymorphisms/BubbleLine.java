@@ -1,12 +1,12 @@
 package ru.courses.oop.polymorphisms;
 
-public class Polymorphism2 extends PolyLine {
+public class BubbleLine extends PolyLine {
 
-  public Polymorphism2(Point[] points) {
+  public BubbleLine(Point[] points) {
     super(points);
   }
 
-  public double lenght1() {
+  public double lenght() {
     double sum, X, Y;
     X = points[points.length - 1].x - points[0].x;
     Y = points[points.length - 1].y - points[0].y;
