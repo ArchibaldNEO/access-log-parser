@@ -1,9 +1,9 @@
 package ru.courses.oop.line;
 
 import ru.courses.oop.point.Point;
-import ru.courses.oop.polymorphisms.Direct;
+import ru.courses.oop.polymorphisms.Polymorphism3;
 
-public class Line implements Direct {
+public class Line implements Polymorphism3 {
   Point begin;
   Point end;
 

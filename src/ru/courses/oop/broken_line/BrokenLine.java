@@ -2,11 +2,11 @@ package ru.courses.oop.broken_line;
 
 import ru.courses.oop.point.Point;
 import ru.courses.oop.line.Line;
-import ru.courses.oop.polymorphisms.Direct;
+import ru.courses.oop.polymorphisms.Polymorphism3;
 
 import java.util.Arrays;
 
-public class BrokenLine implements Direct {
+public class BrokenLine implements Polymorphism3 {
   Point[] array;
 
   public BrokenLine(Point[] array) {
