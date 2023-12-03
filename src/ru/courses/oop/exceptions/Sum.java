@@ -1,5 +1,4 @@
-public class Sum
-{
+public class Sum {
   public static void main(String[] args) {
     double sum = 0;
     double d = 0;
@@ -7,7 +6,6 @@ public class Sum
       try {
         d = Double.parseDouble(args[i]);
       } catch (NumberFormatException e) {
-        System.out.println(e);
         d = 0;
       }
       sum += d;
@@ -15,4 +13,3 @@ public class Sum
     System.out.println(sum);
   }
 }
-
