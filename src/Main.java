@@ -24,21 +24,24 @@ public class Main {
       count++;
       System.out.println("Это файл номер " + count);
 
-      ArrayList<Integer> arrayList = new ArrayList<>();
 
       try {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
+        ArrayList<Integer> arrayList = new ArrayList<>();
         String line;
 
         while ((line = reader.readLine()) != null) {
-          int length = line.length();
 
-          if (length > 1024) {
+          if (line.length() > 1024) {
             throw new InvalidStringLenghtException("В файле встретилась строка длиннее 1024 символов");
           }
 
-          arrayList.add(length);
+          arrayList.add(line.length());
+        }
+
+        if (arrayList.isEmpty()) {
+          throw new InvalidEmptyException("Файл пуст");
         }
 
         System.out.println("Общее количество строк в файле: " + arrayList.size());
@@ -48,6 +51,8 @@ public class Main {
       } catch (Exception ex) {
         ex.printStackTrace();
       }
+
+
     }
   }
 }
