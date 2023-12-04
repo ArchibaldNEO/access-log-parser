@@ -2,7 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +30,9 @@ public class Main {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
+        int GoogleBot = 0;
+        int YandexBot = 0;
+
         String line;
 
         while ((line = reader.readLine()) != null) {
@@ -38,6 +42,26 @@ public class Main {
           }
 
           arrayList.add(line.length());
+
+          ParserString parserString = new ParserString();
+
+          String s1 = parserString.stringToMap(line).get("User-Agent");
+          //System.out.println(s1);
+
+          String s2 = parserString.searcherBot(s1);
+         // System.out.println(s2);
+
+          /*if (s1.contains("Googlebot"))
+            GoogleBot++;
+          else if (s1.contains("YandexBot"))
+            YandexBot++;*/
+
+          if (s2.equals("Googlebot"))
+            GoogleBot++;
+          else if (s2.equals("YandexBot"))
+            YandexBot++;
+
+
         }
 
         if (arrayList.isEmpty()) {
@@ -45,8 +69,8 @@ public class Main {
         }
 
         System.out.println("Общее количество строк в файле: " + arrayList.size());
-        System.out.println("Длина самой длинной строки в файле: " + arrayList.stream().max(Comparator.naturalOrder()).get());
-        System.out.println("Длина самой короткой строки в файле: " + arrayList.stream().min(Comparator.naturalOrder()).get());
+        System.out.println("GoogleBot: " + GoogleBot);
+        System.out.println("YandexBot: " + YandexBot);
 
       } catch (Exception ex) {
         ex.printStackTrace();
