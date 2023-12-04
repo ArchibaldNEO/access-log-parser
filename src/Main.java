@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -29,6 +30,9 @@ public class Main {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
+        int GoogleBot = 0;
+        int YandexBot = 0;
+
         String line;
 
         while ((line = reader.readLine()) != null) {
@@ -39,10 +43,14 @@ public class Main {
 
           arrayList.add(line.length());
 
-          System.out.println(new ParserString().stringToMap(line));
+          String s = new ParserString().stringToMap(line).get("User-Agent");
 
-          //System.out.println("User-Agent: " + new ParserString().stringToMap(line).get("User-Agent"));
+          System.out.println(s);
 
+          if (s.contains("Googlebot"))
+            GoogleBot++;
+          else if (s.contains("YandexBot"))
+            YandexBot++;
 
         }
 
@@ -51,6 +59,8 @@ public class Main {
         }
 
         System.out.println("Общее количество строк в файле: " + arrayList.size());
+        System.out.println("GoogleBot: " + GoogleBot);
+        System.out.println("YandexBot: " + YandexBot);
 
       } catch (Exception ex) {
         ex.printStackTrace();
