@@ -29,7 +29,6 @@ public class Main {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
-        HashMap<String, String> map = new HashMap<>();
         String line;
 
         while ((line = reader.readLine()) != null) {
@@ -39,9 +38,11 @@ public class Main {
           }
 
           arrayList.add(line.length());
-          ParserString parserString = new ParserString();
-          parserString.stringToMap(line);
-          System.out.println(parserString.stringToMap(line));
+
+          System.out.println(new ParserString().stringToMap(line));
+
+          //System.out.println("User-Agent: " + new ParserString().stringToMap(line).get("User-Agent"));
+
 
         }
 
