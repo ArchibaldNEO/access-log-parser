@@ -1,12 +1,14 @@
 package ru.courses.oop.collections;
 
-
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Cat {
+
+public class Cat{
   private static String breed = "Persian"; // порода
   public String name;
   private int age;
