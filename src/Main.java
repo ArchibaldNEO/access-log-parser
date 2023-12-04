@@ -43,14 +43,24 @@ public class Main {
 
           arrayList.add(line.length());
 
-          String s = new ParserString().stringToMap(line).get("User-Agent");
+          ParserString parserString = new ParserString();
 
-          System.out.println(s);
+          String s1 = parserString.stringToMap(line).get("User-Agent");
+          //System.out.println(s1);
 
-          if (s.contains("Googlebot"))
+          String s2 = parserString.searcherBot(s1);
+         // System.out.println(s2);
+
+          /*if (s1.contains("Googlebot"))
             GoogleBot++;
-          else if (s.contains("YandexBot"))
+          else if (s1.contains("YandexBot"))
+            YandexBot++;*/
+
+          if (s2.equals("Googlebot"))
+            GoogleBot++;
+          else if (s2.equals("YandexBot"))
             YandexBot++;
+
 
         }
 

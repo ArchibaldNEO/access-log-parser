@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,5 +48,52 @@ public class ParserString {
 
     return map;
   }
+
+  public String searcherBot(String someText) {
+    String s1 = "";
+    if (someText.length() > 1) {
+      try {
+        s1 = someText.substring(someText.indexOf("("));
+      } catch (Exception e){
+      }
+    }
+
+    String s2 = "";
+    char[] characterArrayList1 = s1.toCharArray();
+    for (int i = 0; i < characterArrayList1.length; i++) {
+      if (characterArrayList1[i] != ')') {
+        s2 = s2 + characterArrayList1[i];
+      } else {
+        s2 = s2 + characterArrayList1[i];
+        break;
+      }
+    }
+
+
+    String[] parts = s2.split(";");
+
+
+    char[] characterArrayList2 = new char[1];
+    String s3 = "";
+    String s4 = "";
+    if (parts.length >= 2) {
+      characterArrayList2 = parts[1].toCharArray();
+      for (int i = 0; i < characterArrayList2.length; i++) {
+        if (characterArrayList2[i] != ' ') {
+          s3 = s3 + characterArrayList2[i];
+        }
+      }
+
+      char[] characterArrayList3 = s3.toCharArray();
+      for (int i = 0; i < characterArrayList3.length; i++) {
+        if (characterArrayList3[i] != '/') {
+          s4 = s4 + characterArrayList3[i];
+        } else
+          break;
+      }
+    }
+    return s4;
+  }
+
 }
 
