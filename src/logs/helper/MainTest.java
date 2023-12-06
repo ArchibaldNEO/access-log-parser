@@ -1,7 +1,5 @@
 package logs.helper;
 
-import java.util.Arrays;
-
 public class MainTest {
   public static void main(String[] args) {
     LogEntry logEntry = new LogEntry("162.140.234.113 - - " +
@@ -13,10 +11,10 @@ public class MainTest {
 
     System.out.println(logEntry.getIpAddress());
     System.out.println(logEntry.getDateTime());
-    System.out.println(logEntry.httpMethod);
+    System.out.println(logEntry.getHttpMethod());
     System.out.println(logEntry.getPath());
-    System.out.println(logEntry.getHttpCode());
-    System.out.println(logEntry.getSize());
+    System.out.println(logEntry.getResponseCode());
+    System.out.println(logEntry.getResponseSize());
     System.out.println(logEntry.getUserAgent());
 
   }
