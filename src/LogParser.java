@@ -1,3 +1,5 @@
+import logs.helper.LogEntry;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -41,7 +43,18 @@ public class LogParser {
 
           arrayList.add(line.length());
 
-          ParserString parserString = new ParserString();
+          LogEntry logEntry = new LogEntry(line);
+          /*System.out.println(logEntry.getIpAddress());
+          System.out.println(logEntry.getDateTime());
+          System.out.println(logEntry.getHttpMethod());
+          System.out.println(logEntry.getPath());
+          System.out.println(logEntry.getResponseCode());
+          System.out.println(logEntry.getResponseSize());
+          System.out.println(logEntry.getReferer());
+          System.out.println(logEntry.getUserAgent());
+          System.out.println();*/
+
+          /*ParserString parserString = new ParserString();
 
           String s1 = parserString.stringToMap(line).get("User-Agent");
           //System.out.println(s1);
@@ -49,16 +62,15 @@ public class LogParser {
           String s2 = parserString.searcherBot(s1);
          // System.out.println(s2);
 
-          if (s1.contains("Googlebot"))
-            GoogleBot++;
-          else if (s1.contains("YandexBot"))
-            YandexBot++;
-
           /*if (s2.equals("Googlebot"))
             GoogleBot++;
           else if (s2.equals("YandexBot"))
             YandexBot++;*/
 
+          if (logEntry.getUserAgent().contains("Googlebot"))
+            GoogleBot++;
+          else if (logEntry.getUserAgent().contains("YandexBot"))
+            YandexBot++;
 
 
         }
