@@ -1,5 +1,7 @@
 package logs.helper;
 
+import java.util.Arrays;
+
 public class MainTest {
   public static void main(String[] args) {
     LogEntry logEntry = new LogEntry("162.140.234.113 - - " +
@@ -11,12 +13,11 @@ public class MainTest {
 
     System.out.println(logEntry.getIpAddress());
     System.out.println(logEntry.getDateTime());
+    System.out.println(logEntry.httpMethod);
     System.out.println(logEntry.getPath());
     System.out.println(logEntry.getHttpCode());
     System.out.println(logEntry.getSize());
     System.out.println(logEntry.getUserAgent());
-
-    //System.out.println(stringToLocalDateTime("25/Sep/2022:06:25:14 +0300"));
 
   }
 }

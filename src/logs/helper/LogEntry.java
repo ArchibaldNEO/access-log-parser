@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 public class LogEntry {
   private final String ipAddress;
   private final LocalDateTime dateTime;
-  //final Type type;
+  final HttpMethod httpMethod;
   private final String path;
   private final int httpCode;
   private final int size;
@@ -41,7 +41,14 @@ public class LogEntry {
     }
 
 
-    String path = words[1];
+    String methodAndPath = words[1];
+    String[] strings = methodAndPath.split(" ");
+
+    String path = "";
+    for (int i = 1; i <strings.length; i++) {
+      path = path + strings[i] + " ";
+    }
+
 
     String str = words[2].trim();
     String httpCode = str.substring(0, str.indexOf(" "));
@@ -54,12 +61,48 @@ public class LogEntry {
 
     this.ipAddress = ipAddress;
     this.dateTime = stringToLocalDateTime(dateTime);
-    //this.type = type;
-    this.path = path;
+    this.httpMethod = stringToHttpMethod(strings[0]);
+    this.path = path.trim();
     this.httpCode = Integer.parseInt(httpCode);
     this.size = Integer.parseInt(size);
     this.referer = referer;
     this.userAgent = userAgent;
+  }
+
+  public static HttpMethod stringToHttpMethod(String string) {
+    //String[] strings = string.split(" ");
+
+    HttpMethod httpMethod = null;
+    switch (string) {
+      case "GET":
+        httpMethod = HttpMethod.GET;
+        break;
+      case "POST":
+        httpMethod = HttpMethod.POST;
+        break;
+      case "PUT":
+        httpMethod = HttpMethod.PUT;
+        break;
+      case "PATCH":
+        httpMethod = HttpMethod.PATCH;
+        break;
+      case "OPTIONS":
+        httpMethod = HttpMethod.OPTIONS;
+        break;
+      case "TRACE":
+        httpMethod = HttpMethod.TRACE;
+        break;
+      case "CONNECT":
+        httpMethod = HttpMethod.CONNECT;
+        break;
+      case "DELETE":
+        httpMethod = HttpMethod.DELETE;
+        break;
+      case "HEAD":
+        httpMethod = HttpMethod.HEAD;
+        break;
+    }
+    return httpMethod;
   }
 
 
@@ -118,44 +161,3 @@ public class LogEntry {
 }
 
 
-enum Type {
-  GET,
-  POST,
-  PUT,
-  DELETE,
-  PATCH,
-  HEAD,
-  OPTIONS,
-  CONNECT,
-  TRACE;
-}
-
-@Getter
-enum Month {
-  Jan("01"),
-  Feb("02"),
-  Mar("03"),
-  Apr("04"),
-  May("05"),
-  Jun("06"),
-  Jul("07"),
-  Aug("08"),
-  Sep("09"),
-  Oct("10"),
-  Nov("11"),
-  Dec("12");
-
-  private final String title;
-
-  Month(String title) {
-    this.title = title;
-  }
-
-  @Override
-  public String toString() {
-    return "DayOfWeek{" +
-            "title='" + title + '\'' +
-            '}';
-  }
-
-}
