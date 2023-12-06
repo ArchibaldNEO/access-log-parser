@@ -1,14 +1,10 @@
-import logs.helper.LogEntry;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class Main {
+public class LogParser {
   public static void main(String[] args) {
     int count = 0;
 
