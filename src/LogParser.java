@@ -1,12 +1,13 @@
+import logs.helper.LogEntry;
+import logs.helper.Statistics;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class Main {
+public class LogParser {
   public static void main(String[] args) {
     int count = 0;
 
@@ -25,14 +26,13 @@ public class Main {
       count++;
       System.out.println("Это файл номер " + count);
 
-
       try {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
+        Statistics statistics = new Statistics();
         int GoogleBot = 0;
         int YandexBot = 0;
-
         String line;
 
         while ((line = reader.readLine()) != null) {
@@ -42,25 +42,13 @@ public class Main {
           }
 
           arrayList.add(line.length());
+          LogEntry logEntry = new LogEntry(line);
+          statistics.addEntry(logEntry);
 
-          ParserString parserString = new ParserString();
-
-          String s1 = parserString.stringToMap(line).get("User-Agent");
-          //System.out.println(s1);
-
-          String s2 = parserString.searcherBot(s1);
-         // System.out.println(s2);
-
-          /*if (s1.contains("Googlebot"))
+          if (logEntry.getUserAgent().contains("Googlebot"))
             GoogleBot++;
-          else if (s1.contains("YandexBot"))
-            YandexBot++;*/
-
-          if (s2.equals("Googlebot"))
-            GoogleBot++;
-          else if (s2.equals("YandexBot"))
+          else if (logEntry.getUserAgent().contains("YandexBot"))
             YandexBot++;
-
 
         }
 
@@ -71,6 +59,10 @@ public class Main {
         System.out.println("Общее количество строк в файле: " + arrayList.size());
         System.out.println("GoogleBot: " + GoogleBot);
         System.out.println("YandexBot: " + YandexBot);
+        System.out.println("Минимальная дата лога: " + statistics.getMinTime());
+        System.out.println("Максимальная дата лога: " + statistics.getMaxTime());
+        System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
+        System.out.println("Объем часового трафика: " + statistics.getTrafficRate(statistics.getMinTime(), statistics.getMaxTime()));
 
       } catch (Exception ex) {
         ex.printStackTrace();
