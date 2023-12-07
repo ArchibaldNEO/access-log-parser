@@ -1,5 +1,9 @@
 package logs.helper;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.Period;
+
 public class MainTest {
   public static void main(String[] args) {
     LogEntry logEntry = new LogEntry("162.140.234.113 - - " +
@@ -40,7 +44,41 @@ public class MainTest {
 
     System.out.println(userAgent1.getTypeSystem() + " " + userAgent1.getNameBrowser());
 
+    LocalDateTime localDateTimeStart = LocalDateTime.parse("2022-09-25T06:25:04");
+    LocalDateTime localDateTimeEnd = LocalDateTime.parse("2022-09-26T10:18:51");
+    System.out.println(localDateTimeStart.getYear() + " "
+            + localDateTimeStart.getMonthValue() + " "
+            + localDateTimeStart.getDayOfMonth() + " "
+            + localDateTimeStart.getHour() + " "
+            + localDateTimeStart.getMinute() + " "
+            + localDateTimeStart.getSecond() + " ");
 
+
+    LocalDateTime toDateTime = LocalDateTime.of(localDateTimeStart.getYear(), localDateTimeStart.getMonthValue(),
+            localDateTimeStart.getDayOfMonth(), localDateTimeStart.getHour(),
+            localDateTimeStart.getMinute(), localDateTimeStart.getSecond());
+    LocalDateTime fromDateTime = LocalDateTime.of(localDateTimeEnd.getYear(), localDateTimeEnd.getMonthValue(),
+            localDateTimeEnd.getDayOfMonth(), localDateTimeEnd.getHour(),
+            localDateTimeEnd.getMinute(), localDateTimeEnd.getSecond());
+
+    Period period = Period.between(toDateTime.toLocalDate(), fromDateTime.toLocalDate());
+    Duration duration = Duration.between(toDateTime.toLocalTime(), fromDateTime.toLocalTime());
+
+    System.out.println(period.getYears() + " years " +
+            period.getMonths() + " months " +
+            period.getDays() + " days " +
+            duration.toHoursPart() + " hours " +
+            duration.toMinutesPart() + " minutes " +
+            duration.toSecondsPart() + " seconds.");
+
+
+    double n =  period.getYears() * 8760 + period.getMonths() * 730.001 +
+            period.getDays() * 24.000006575999520919 +
+                duration.toHoursPart() + duration.toMinutesPart() * 0.016666671233333 +
+            duration.toSecondsPart() * 0.00027777785388888336831;
+
+    System.out.println(n);
+    System.out.printf("%.3f%n",(double) n);
   }
 
 
@@ -73,4 +111,6 @@ public class MainTest {
     else
       return "none";
   }
+
+
 }
