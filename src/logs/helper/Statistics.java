@@ -5,6 +5,8 @@ import lombok.Getter;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 
 @Getter
@@ -12,6 +14,7 @@ public class Statistics {
   private long totalTraffic;
   private LocalDateTime minTime;
   private LocalDateTime maxTime;
+  private final HashSet<String> set = new HashSet<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -27,6 +30,10 @@ public class Statistics {
     }
 
     this.maxTime = logEntries.getDateTime();
+
+    if (logEntries.getResponseCode() == 200) {
+      this.set.add(logEntries.getPath());
+    }
 
   }
 
@@ -51,4 +58,13 @@ public class Statistics {
 
     return (double) this.totalTraffic / hours;
   }
+
+  public HashSet<String> getAlLPath(ArrayList<LogEntry> logEntries) {
+    HashSet<String> set = new HashSet<>();
+    for (LogEntry logEntry : logEntries) {
+      set.add(logEntry.getPath());
+    }
+    return set;
+  }
+
 }

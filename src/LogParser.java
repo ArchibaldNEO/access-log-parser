@@ -5,11 +5,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class LogParser {
   public static void main(String[] args) {
     int count = 0;
+
+    Statistics statistics = new Statistics();
+    HashSet<String> hashSet = new HashSet<>();
+    ArrayList<LogEntry> logEntries = new ArrayList<>();
 
     while (true) {
       System.out.print("Укажите путь к файлу: ");
@@ -30,7 +36,8 @@ public class LogParser {
         FileReader fileReader = new FileReader(path);
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
-        Statistics statistics = new Statistics();
+
+
         int GoogleBot = 0;
         int YandexBot = 0;
         String line;
@@ -44,6 +51,8 @@ public class LogParser {
           arrayList.add(line.length());
           LogEntry logEntry = new LogEntry(line);
           statistics.addEntry(logEntry);
+          logEntries.add(logEntry);
+
 
           if (logEntry.getUserAgent().contains("Googlebot"))
             GoogleBot++;
@@ -64,10 +73,19 @@ public class LogParser {
         System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
         System.out.println("Объем часового трафика: " + statistics.getTrafficRate(statistics.getMinTime(), statistics.getMaxTime()));
 
+        System.out.println("Iterating over list:");
+        Iterator<String> i = statistics.getSet().iterator();
+        while (i.hasNext())
+          System.out.println(i.next());
+
+        System.out.println(statistics.getAlLPath(logEntries).size());
+        System.out.println(statistics.getSet().size());
+
+
       } catch (Exception ex) {
         ex.printStackTrace();
       }
-
+//   /Users/askvortsov/Documents/Autotests_StepUP/master/access-log-parser/src/access.log
 
     }
   }

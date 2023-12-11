@@ -3,6 +3,7 @@ package logs.helper;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.HashSet;
 
 public class MainTest {
   public static void main(String[] args) {
@@ -79,6 +80,19 @@ public class MainTest {
 
     System.out.println(n);
     System.out.printf("%.3f%n",(double) n);
+
+    HashSet<String> h = new HashSet<String>();
+
+    // Добавляем элементы в HashSet с помощью метода add()
+    h.add("India");
+    h.add("Australia");
+    h.add("South Africa");
+    h.add("India");// пытаемся добавить еще один такой же элемент
+
+    // Выводим элементы HashSet в консоль
+    System.out.println(h);
+    System.out.println("List contains India or not:" +
+            h.contains("India"));
   }
 
 
@@ -111,6 +125,7 @@ public class MainTest {
     else
       return "none";
   }
+
 
 
 }
