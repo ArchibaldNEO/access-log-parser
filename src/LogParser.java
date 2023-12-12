@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class LogParser {
@@ -72,12 +71,10 @@ public class LogParser {
         System.out.println("Максимальная дата лога: " + statistics.getMaxTime());
         System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
         System.out.println("Объем часового трафика: " + statistics.getTrafficRate(statistics.getMinTime(), statistics.getMaxTime()));
-        System.out.println("Количество каждой ОС : " + statistics.getStringIntegerHashMap());
-        System.out.println("Доля каждой ОС от общего числа : " + statistics.getStaticOC(statistics.getStringIntegerHashMap(), arrayList.size()));
-
-        System.out.println(statistics.getNotFound().size());
-
-        System.out.println(statistics.getNotFound());
+        System.out.println("Количество каждой ОС : " + statistics.getSystemHashMap());
+        System.out.println("Доля каждой ОС от общего числа : " + statistics.getStaticOC(statistics.getSystemHashMap(), arrayList.size()));
+        System.out.println("Количество каждого браузера : " + statistics.getBrowserHashMap());
+        System.out.println("Доля каждой браузера от общего числа : " + statistics.getStaticBrowser(statistics.getBrowserHashMap(), arrayList.size()));
 
       } catch (Exception ex) {
         ex.printStackTrace();
