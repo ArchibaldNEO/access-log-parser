@@ -72,15 +72,8 @@ public class LogParser {
         System.out.println("Максимальная дата лога: " + statistics.getMaxTime());
         System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
         System.out.println("Объем часового трафика: " + statistics.getTrafficRate(statistics.getMinTime(), statistics.getMaxTime()));
-
-        /*Iterator<String> i = statistics.getStringHashSet().iterator();
-        while (i.hasNext())
-          System.out.println(i.next());
-
-        System.out.println(statistics.getAlLPath(logEntries).size());
-        System.out.println(statistics.getStringHashSet().size());*/
-
-        System.out.println(statistics.getStringIntegerHashMap());
+        System.out.println("Количество каждой ОС : " + statistics.getStringIntegerHashMap());
+        System.out.println("Доля каждой ОС от общего числа : " + statistics.getStaticOC(statistics.getStringIntegerHashMap(), arrayList.size()));
 
       } catch (Exception ex) {
         ex.printStackTrace();

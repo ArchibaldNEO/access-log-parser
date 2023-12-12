@@ -47,7 +47,7 @@ public class MainTest {
 
     System.out.println();
 
-    System.out.println(userAgent3.getTypeSystem().toString());
+    System.out.println(15771.0 / 191076);
 
 
   }
