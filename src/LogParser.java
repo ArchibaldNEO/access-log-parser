@@ -73,14 +73,14 @@ public class LogParser {
         System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
         System.out.println("Объем часового трафика: " + statistics.getTrafficRate(statistics.getMinTime(), statistics.getMaxTime()));
 
-        System.out.println("Iterating over list:");
-        Iterator<String> i = statistics.getSet().iterator();
+        /*Iterator<String> i = statistics.getStringHashSet().iterator();
         while (i.hasNext())
           System.out.println(i.next());
 
         System.out.println(statistics.getAlLPath(logEntries).size());
-        System.out.println(statistics.getSet().size());
+        System.out.println(statistics.getStringHashSet().size());*/
 
+        System.out.println(statistics.getStringIntegerHashMap());
 
       } catch (Exception ex) {
         ex.printStackTrace();

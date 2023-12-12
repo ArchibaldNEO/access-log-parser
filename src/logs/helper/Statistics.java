@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 
@@ -14,7 +15,8 @@ public class Statistics {
   private long totalTraffic;
   private LocalDateTime minTime;
   private LocalDateTime maxTime;
-  private final HashSet<String> set = new HashSet<>();
+  private final HashSet<String> stringHashSet = new HashSet<>();
+  private final HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -32,10 +34,21 @@ public class Statistics {
     this.maxTime = logEntries.getDateTime();
 
     if (logEntries.getResponseCode() == 200) {
-      this.set.add(logEntries.getPath());
+      this.stringHashSet.add(logEntries.getPath());
     }
 
+    UserAgent userAgent = new UserAgent(logEntries.getUserAgent());
+
+    if (!userAgent.getTypeSystem().equals("none")) {
+      if (stringIntegerHashMap.containsKey(userAgent.getTypeSystem())) {
+        stringIntegerHashMap.put(userAgent.getTypeSystem(), stringIntegerHashMap.get(userAgent.getTypeSystem()) + 1);
+      } else
+        stringIntegerHashMap.put(userAgent.getTypeSystem(), 1);
+    }
+
+
   }
+
 
   public double getTrafficRate(LocalDateTime minTime, LocalDateTime maxTime) {
     LocalDateTime toDateTime = LocalDateTime.of(maxTime.getYear(), maxTime.getMonthValue(),
