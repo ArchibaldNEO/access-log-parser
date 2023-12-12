@@ -8,7 +8,6 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 
 @Getter
@@ -16,8 +15,10 @@ public class Statistics {
   private long totalTraffic;
   private LocalDateTime minTime;
   private LocalDateTime maxTime;
-  private final HashSet<String> stringHashSet = new HashSet<>();
-  private final HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+  private final HashSet<String> success = new HashSet<>();
+  private final HashMap<String, Integer> systemHashMap = new HashMap<>();
+  private final HashSet<String> notFound = new HashSet<>();
+  private final HashMap<String, Integer> browserHashMap = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -35,18 +36,24 @@ public class Statistics {
     this.maxTime = logEntries.getDateTime();
 
     if (logEntries.getResponseCode() == 200) {
-      this.stringHashSet.add(logEntries.getPath());
+      this.success.add(logEntries.getPath());
+    } else if (logEntries.getResponseCode() == 404) {
+      this.notFound.add(logEntries.getPath());
     }
 
     UserAgent userAgent = new UserAgent(logEntries.getUserAgent());
 
     //if (!userAgent.getTypeSystem().equals("none")) {
-    if (stringIntegerHashMap.containsKey(userAgent.getTypeSystem())) {
-      stringIntegerHashMap.put(userAgent.getTypeSystem(), stringIntegerHashMap.get(userAgent.getTypeSystem()) + 1);
+    if (systemHashMap.containsKey(userAgent.getTypeSystem())) {
+      systemHashMap.put(userAgent.getTypeSystem(), systemHashMap.get(userAgent.getTypeSystem()) + 1);
     } else
-      stringIntegerHashMap.put(userAgent.getTypeSystem(), 1);
+      systemHashMap.put(userAgent.getTypeSystem(), 1);
     //}
 
+    if (browserHashMap.containsKey(userAgent.getNameBrowser())) {
+      browserHashMap.put(userAgent.getNameBrowser(), browserHashMap.get(userAgent.getNameBrowser()) + 1);
+    } else
+      browserHashMap.put(userAgent.getNameBrowser(), 1);
 
   }
 
@@ -91,7 +98,33 @@ public class Statistics {
       doubleHashMap.put(keys.get(i), ((double) values.get(i) / size));
     }
 
+    /*double n = 0;
+    for (int i = 0; i < stringIntegerHashMap.size(); i++) {
+      n = (double) values.get(i) / size + n;
+    }
+    System.out.println(n);*/
+
     return doubleHashMap;
   }
+
+  public HashMap<String, Double> getStaticBrowser(HashMap<String, Integer> stringIntegerHashMap, int size) {
+    HashMap<String, Double> doubleHashMap = new HashMap<>();
+
+    ArrayList<String> keys = new ArrayList<>(stringIntegerHashMap.keySet());
+    ArrayList<Integer> values = new ArrayList<>(stringIntegerHashMap.values());
+
+    for (int i = 0; i < stringIntegerHashMap.size(); i++) {
+      doubleHashMap.put(keys.get(i), ((double) values.get(i) / size));
+    }
+
+    /*double n = 0;
+    for (int i = 0; i < stringIntegerHashMap.size(); i++) {
+      n = (double) values.get(i) / size + n;
+    }
+    System.out.println(n);*/
+
+    return doubleHashMap;
+  }
+
 
 }
