@@ -8,7 +8,6 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 
 @Getter
@@ -16,8 +15,9 @@ public class Statistics {
   private long totalTraffic;
   private LocalDateTime minTime;
   private LocalDateTime maxTime;
-  private final HashSet<String> stringHashSet = new HashSet<>();
+  private final HashSet<String> success = new HashSet<>();
   private final HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+  private final HashSet<String> notFound = new HashSet<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -35,7 +35,9 @@ public class Statistics {
     this.maxTime = logEntries.getDateTime();
 
     if (logEntries.getResponseCode() == 200) {
-      this.stringHashSet.add(logEntries.getPath());
+      this.success.add(logEntries.getPath());
+    } else if (logEntries.getResponseCode() == 404) {
+      this.notFound.add(logEntries.getPath());
     }
 
     UserAgent userAgent = new UserAgent(logEntries.getUserAgent());

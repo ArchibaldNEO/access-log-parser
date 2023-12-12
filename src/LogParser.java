@@ -75,6 +75,10 @@ public class LogParser {
         System.out.println("Количество каждой ОС : " + statistics.getStringIntegerHashMap());
         System.out.println("Доля каждой ОС от общего числа : " + statistics.getStaticOC(statistics.getStringIntegerHashMap(), arrayList.size()));
 
+        System.out.println(statistics.getNotFound().size());
+
+        System.out.println(statistics.getNotFound());
+
       } catch (Exception ex) {
         ex.printStackTrace();
       }
