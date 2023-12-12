@@ -3,6 +3,7 @@ package logs.helper;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.HashSet;
 
 public class MainTest {
   public static void main(String[] args) {
@@ -44,73 +45,10 @@ public class MainTest {
 
     System.out.println(userAgent1.getTypeSystem() + " " + userAgent1.getNameBrowser());
 
-    LocalDateTime localDateTimeStart = LocalDateTime.parse("2022-09-25T06:25:04");
-    LocalDateTime localDateTimeEnd = LocalDateTime.parse("2022-09-26T10:18:51");
-    System.out.println(localDateTimeStart.getYear() + " "
-            + localDateTimeStart.getMonthValue() + " "
-            + localDateTimeStart.getDayOfMonth() + " "
-            + localDateTimeStart.getHour() + " "
-            + localDateTimeStart.getMinute() + " "
-            + localDateTimeStart.getSecond() + " ");
+    System.out.println();
+
+    System.out.println(15771.0 / 191076);
 
 
-    LocalDateTime toDateTime = LocalDateTime.of(localDateTimeStart.getYear(), localDateTimeStart.getMonthValue(),
-            localDateTimeStart.getDayOfMonth(), localDateTimeStart.getHour(),
-            localDateTimeStart.getMinute(), localDateTimeStart.getSecond());
-    LocalDateTime fromDateTime = LocalDateTime.of(localDateTimeEnd.getYear(), localDateTimeEnd.getMonthValue(),
-            localDateTimeEnd.getDayOfMonth(), localDateTimeEnd.getHour(),
-            localDateTimeEnd.getMinute(), localDateTimeEnd.getSecond());
-
-    Period period = Period.between(toDateTime.toLocalDate(), fromDateTime.toLocalDate());
-    Duration duration = Duration.between(toDateTime.toLocalTime(), fromDateTime.toLocalTime());
-
-    System.out.println(period.getYears() + " years " +
-            period.getMonths() + " months " +
-            period.getDays() + " days " +
-            duration.toHoursPart() + " hours " +
-            duration.toMinutesPart() + " minutes " +
-            duration.toSecondsPart() + " seconds.");
-
-
-    double n =  period.getYears() * 8760 + period.getMonths() * 730.001 +
-            period.getDays() * 24.000006575999520919 +
-                duration.toHoursPart() + duration.toMinutesPart() * 0.016666671233333 +
-            duration.toSecondsPart() * 0.00027777785388888336831;
-
-    System.out.println(n);
-    System.out.printf("%.3f%n",(double) n);
   }
-
-
-  public static String identifyBrowser(String s) {
-    if (s.contains("Chrome") && s.contains("Safari") && s.contains("Edge"))
-      return "Edge";
-    else if (s.contains("Chrome") && s.contains("Safari") && s.contains("OPR"))
-      return "OPR";
-    else if (s.contains("Chrome") && s.contains("Safari"))
-      return "Chrome";
-    else if (s.contains("Firefox"))
-      return "Firefox";
-    else if (s.contains("Safari"))
-      return "Safari";
-    else if (s.contains("compatible"))
-      return "compatible";
-    else if (s.contains("curl"))
-      return "curl";
-    else
-      return "PostmanRuntime";
-  }
-
-  public static String identifySystem(String s) {
-    if (s.contains("Linux"))
-      return "Linux";
-    else if (s.contains("Windows"))
-      return "Windows";
-    else if (s.contains("Mac"))
-      return "macOS";
-    else
-      return "none";
-  }
-
-
 }

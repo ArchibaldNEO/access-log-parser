@@ -5,6 +5,10 @@ import lombok.Getter;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -12,6 +16,8 @@ public class Statistics {
   private long totalTraffic;
   private LocalDateTime minTime;
   private LocalDateTime maxTime;
+  private final HashSet<String> stringHashSet = new HashSet<>();
+  private final HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -28,7 +34,22 @@ public class Statistics {
 
     this.maxTime = logEntries.getDateTime();
 
+    if (logEntries.getResponseCode() == 200) {
+      this.stringHashSet.add(logEntries.getPath());
+    }
+
+    UserAgent userAgent = new UserAgent(logEntries.getUserAgent());
+
+    //if (!userAgent.getTypeSystem().equals("none")) {
+    if (stringIntegerHashMap.containsKey(userAgent.getTypeSystem())) {
+      stringIntegerHashMap.put(userAgent.getTypeSystem(), stringIntegerHashMap.get(userAgent.getTypeSystem()) + 1);
+    } else
+      stringIntegerHashMap.put(userAgent.getTypeSystem(), 1);
+    //}
+
+
   }
+
 
   public double getTrafficRate(LocalDateTime minTime, LocalDateTime maxTime) {
     LocalDateTime toDateTime = LocalDateTime.of(maxTime.getYear(), maxTime.getMonthValue(),
@@ -51,4 +72,26 @@ public class Statistics {
 
     return (double) this.totalTraffic / hours;
   }
+
+  public HashSet<String> getAlLPath(ArrayList<LogEntry> logEntries) {
+    HashSet<String> set = new HashSet<>();
+    for (LogEntry logEntry : logEntries) {
+      set.add(logEntry.getPath());
+    }
+    return set;
+  }
+
+  public HashMap<String, Double> getStaticOC(HashMap<String, Integer> stringIntegerHashMap, int size) {
+    HashMap<String, Double> doubleHashMap = new HashMap<>();
+
+    ArrayList<String> keys = new ArrayList<>(stringIntegerHashMap.keySet());
+    ArrayList<Integer> values = new ArrayList<>(stringIntegerHashMap.values());
+
+    for (int i = 0; i < stringIntegerHashMap.size(); i++) {
+      doubleHashMap.put(keys.get(i), ((double) values.get(i) / size));
+    }
+
+    return doubleHashMap;
+  }
+
 }
