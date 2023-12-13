@@ -87,7 +87,14 @@ public class LogParser {
         System.out.println("Количество запросов, по которым был ошибочный код ответа (4xx или 5xx): " + statistics.getCountError());
         System.out.println("Подсчёт среднего количества ошибочных запросов в час: " +
                 statistics.getAverageCountVisitSites(statistics.getMinTime(),
-                statistics.getMaxTime(), statistics.getCountError()));
+                        statistics.getMaxTime(), statistics.getCountError()));
+
+        System.out.println("Количество посещений от реальных пользователей: " + statistics.getVisitFromUsers());
+        System.out.println("Количество уникальных реальных пользователей: " + statistics.getUniqueUsers().size());
+        //System.out.println(statistics.getRealUser().values());
+
+        System.out.println("Расчёта средней посещаемости одним пользователем: " +
+                statistics.getStaticVisitRealUsers(statistics.getVisitFromUsers(), statistics.getUniqueUsers().size()));
 
 
       } catch (Exception ex) {

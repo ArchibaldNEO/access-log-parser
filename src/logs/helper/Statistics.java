@@ -21,6 +21,8 @@ public class Statistics {
   private final HashMap<String, Integer> browserHashMap = new HashMap<>();
   private int visitFromUsers = 0;
   private int countError = 0;
+  private final HashSet<String> uniqueUsers = new HashSet<>();
+  //private final HashMap<String, Integer> realUser = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -57,8 +59,15 @@ public class Statistics {
     } else
       browserHashMap.put(userAgent.getNameBrowser(), 1);
 
-    if (!userAgent.getIsBot())
+    if (!userAgent.getIsBot()) {
       visitFromUsers++;
+      uniqueUsers.add(logEntries.getIpAddress());
+
+      /*if (realUser.containsKey(logEntries.getIpAddress())) {
+        realUser.put(logEntries.getIpAddress(), realUser.get(logEntries.getIpAddress()) + 1);
+      } else
+        realUser.put(logEntries.getIpAddress(), 1);*/
+    }
 
     if (logEntries.getResponseCode() <= 600 && logEntries.getResponseCode() >= 400) {
       this.countError++;
@@ -178,6 +187,11 @@ public class Statistics {
 
 
     return hours / countError;
+  }
+
+
+  public double getStaticVisitRealUsers(int countVisitRealUser, int countRealUser) {
+    return (double) countVisitRealUser / countRealUser;
   }
 
 
