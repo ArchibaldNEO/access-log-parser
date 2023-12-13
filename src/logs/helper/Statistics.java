@@ -20,6 +20,7 @@ public class Statistics {
   private final HashSet<String> notFound = new HashSet<>();
   private final HashMap<String, Integer> browserHashMap = new HashMap<>();
   private int visitFromUsers = 0;
+  private int countError = 0;
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -58,6 +59,10 @@ public class Statistics {
 
     if (!userAgent.getIsBot())
       visitFromUsers++;
+
+    if (logEntries.getResponseCode() <= 600 && logEntries.getResponseCode() >= 400) {
+      this.countError++;
+    }
 
   }
 
@@ -150,6 +155,29 @@ public class Statistics {
 
 
     return countVisit / hours;
+  }
+
+
+  public double getAverageCountError(LocalDateTime minTime, LocalDateTime maxTime, int countError) {
+    LocalDateTime toDateTime = LocalDateTime.of(maxTime.getYear(), maxTime.getMonthValue(),
+            maxTime.getDayOfMonth(), maxTime.getHour(),
+            maxTime.getMinute(), maxTime.getSecond());
+
+    LocalDateTime fromDateTime = LocalDateTime.of(minTime.getYear(), minTime.getMonthValue(),
+            minTime.getDayOfMonth(), minTime.getHour(),
+            minTime.getMinute(), minTime.getSecond());
+
+    Period period = Period.between(fromDateTime.toLocalDate(), toDateTime.toLocalDate());
+    Duration duration = Duration.between(fromDateTime.toLocalTime(), toDateTime.toLocalTime());
+
+
+    double hours = period.getYears() * 8760 + period.getMonths() * 730.001 +
+            period.getDays() * 24.000006575999520919 +
+            duration.toHoursPart() + duration.toMinutesPart() * 0.016666671233333 +
+            duration.toSecondsPart() * 0.00027777785388888336831;
+
+
+    return hours / countError;
   }
 
 

@@ -84,6 +84,11 @@ public class LogParser {
         System.out.println("Подсчёт среднего количества посещений сайта за час : " + statistics.getAverageCountVisitSites(statistics.getMinTime(),
                 statistics.getMaxTime(), statistics.getVisitFromUsers()));
 
+        System.out.println("Количество запросов, по которым был ошибочный код ответа (4xx или 5xx): " + statistics.getCountError());
+        System.out.println("Подсчёт среднего количества ошибочных запросов в час: " +
+                statistics.getAverageCountVisitSites(statistics.getMinTime(),
+                statistics.getMaxTime(), statistics.getCountError()));
+
 
       } catch (Exception ex) {
         ex.printStackTrace();
