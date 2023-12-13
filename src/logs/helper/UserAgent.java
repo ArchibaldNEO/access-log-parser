@@ -6,12 +6,13 @@ import lombok.Getter;
 public class UserAgent {
   private final String typeSystem;
   private final String nameBrowser;
+  private final Boolean isBot;
 
   public UserAgent(String userAgent) {
     this.typeSystem = identifySystem(userAgent);
-    this.nameBrowser = identifyBrowser(userAgent);;
+    this.nameBrowser = identifyBrowser(userAgent);
+    this.isBot = isBot(userAgent);
   }
-
 
 
   public static String identifyBrowser(String s) {
@@ -43,4 +44,9 @@ public class UserAgent {
     else
       return "none";
   }
+
+  public static boolean isBot(String s) {
+    return s.contains("bot");
+  }
+
 }

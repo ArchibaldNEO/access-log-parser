@@ -39,6 +39,7 @@ public class LogParser {
 
         int GoogleBot = 0;
         int YandexBot = 0;
+        int bot = 0;
         String line;
 
         while ((line = reader.readLine()) != null) {
@@ -58,6 +59,10 @@ public class LogParser {
           else if (logEntry.getUserAgent().contains("YandexBot"))
             YandexBot++;
 
+
+          if (logEntry.getUserAgent().contains("bot"))
+            bot++;
+
         }
 
         if (arrayList.isEmpty()) {
@@ -67,6 +72,7 @@ public class LogParser {
         System.out.println("Общее количество строк в файле: " + arrayList.size());
         System.out.println("GoogleBot: " + GoogleBot);
         System.out.println("YandexBot: " + YandexBot);
+        System.out.println("Сколько всего запросов от ботов: " + bot);
         System.out.println("Минимальная дата лога: " + statistics.getMinTime());
         System.out.println("Максимальная дата лога: " + statistics.getMaxTime());
         System.out.println("Общий объем трафика: " + statistics.getTotalTraffic());
@@ -75,6 +81,21 @@ public class LogParser {
         System.out.println("Доля каждой ОС от общего числа : " + statistics.getStaticOC(statistics.getSystemHashMap(), arrayList.size()));
         System.out.println("Количество каждого браузера : " + statistics.getBrowserHashMap());
         System.out.println("Доля каждой браузера от общего числа : " + statistics.getStaticBrowser(statistics.getBrowserHashMap(), arrayList.size()));
+        System.out.println("Подсчёт среднего количества посещений сайта за час : " + statistics.getAverageCountVisitSites(statistics.getMinTime(),
+                statistics.getMaxTime(), statistics.getVisitFromUsers()));
+
+        System.out.println("Количество запросов, по которым был ошибочный код ответа (4xx или 5xx): " + statistics.getCountError());
+        System.out.println("Подсчёт среднего количества ошибочных запросов в час: " +
+                statistics.getAverageCountVisitSites(statistics.getMinTime(),
+                        statistics.getMaxTime(), statistics.getCountError()));
+
+        System.out.println("Количество посещений от реальных пользователей: " + statistics.getVisitFromUsers());
+        System.out.println("Количество уникальных реальных пользователей: " + statistics.getUniqueUsers().size());
+        //System.out.println(statistics.getRealUser().values());
+
+        System.out.println("Расчёта средней посещаемости одним пользователем: " +
+                statistics.getStaticVisitRealUsers(statistics.getVisitFromUsers(), statistics.getUniqueUsers().size()));
+
 
       } catch (Exception ex) {
         ex.printStackTrace();

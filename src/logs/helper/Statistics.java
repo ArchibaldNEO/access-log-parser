@@ -19,6 +19,10 @@ public class Statistics {
   private final HashMap<String, Integer> systemHashMap = new HashMap<>();
   private final HashSet<String> notFound = new HashSet<>();
   private final HashMap<String, Integer> browserHashMap = new HashMap<>();
+  private int visitFromUsers = 0;
+  private int countError = 0;
+  private final HashSet<String> uniqueUsers = new HashSet<>();
+  //private final HashMap<String, Integer> realUser = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -54,6 +58,20 @@ public class Statistics {
       browserHashMap.put(userAgent.getNameBrowser(), browserHashMap.get(userAgent.getNameBrowser()) + 1);
     } else
       browserHashMap.put(userAgent.getNameBrowser(), 1);
+
+    if (!userAgent.getIsBot()) {
+      visitFromUsers++;
+      uniqueUsers.add(logEntries.getIpAddress());
+
+      /*if (realUser.containsKey(logEntries.getIpAddress())) {
+        realUser.put(logEntries.getIpAddress(), realUser.get(logEntries.getIpAddress()) + 1);
+      } else
+        realUser.put(logEntries.getIpAddress(), 1);*/
+    }
+
+    if (logEntries.getResponseCode() <= 600 && logEntries.getResponseCode() >= 400) {
+      this.countError++;
+    }
 
   }
 
@@ -124,6 +142,56 @@ public class Statistics {
     System.out.println(n);*/
 
     return doubleHashMap;
+  }
+
+  public double getAverageCountVisitSites(LocalDateTime minTime, LocalDateTime maxTime, int countVisit) {
+    LocalDateTime toDateTime = LocalDateTime.of(maxTime.getYear(), maxTime.getMonthValue(),
+            maxTime.getDayOfMonth(), maxTime.getHour(),
+            maxTime.getMinute(), maxTime.getSecond());
+
+    LocalDateTime fromDateTime = LocalDateTime.of(minTime.getYear(), minTime.getMonthValue(),
+            minTime.getDayOfMonth(), minTime.getHour(),
+            minTime.getMinute(), minTime.getSecond());
+
+    Period period = Period.between(fromDateTime.toLocalDate(), toDateTime.toLocalDate());
+    Duration duration = Duration.between(fromDateTime.toLocalTime(), toDateTime.toLocalTime());
+
+
+    double hours = period.getYears() * 8760 + period.getMonths() * 730.001 +
+            period.getDays() * 24.000006575999520919 +
+            duration.toHoursPart() + duration.toMinutesPart() * 0.016666671233333 +
+            duration.toSecondsPart() * 0.00027777785388888336831;
+
+
+    return countVisit / hours;
+  }
+
+
+  public double getAverageCountError(LocalDateTime minTime, LocalDateTime maxTime, int countError) {
+    LocalDateTime toDateTime = LocalDateTime.of(maxTime.getYear(), maxTime.getMonthValue(),
+            maxTime.getDayOfMonth(), maxTime.getHour(),
+            maxTime.getMinute(), maxTime.getSecond());
+
+    LocalDateTime fromDateTime = LocalDateTime.of(minTime.getYear(), minTime.getMonthValue(),
+            minTime.getDayOfMonth(), minTime.getHour(),
+            minTime.getMinute(), minTime.getSecond());
+
+    Period period = Period.between(fromDateTime.toLocalDate(), toDateTime.toLocalDate());
+    Duration duration = Duration.between(fromDateTime.toLocalTime(), toDateTime.toLocalTime());
+
+
+    double hours = period.getYears() * 8760 + period.getMonths() * 730.001 +
+            period.getDays() * 24.000006575999520919 +
+            duration.toHoursPart() + duration.toMinutesPart() * 0.016666671233333 +
+            duration.toSecondsPart() * 0.00027777785388888336831;
+
+
+    return hours / countError;
+  }
+
+
+  public double getStaticVisitRealUsers(int countVisitRealUser, int countRealUser) {
+    return (double) countVisitRealUser / countRealUser;
   }
 
 
