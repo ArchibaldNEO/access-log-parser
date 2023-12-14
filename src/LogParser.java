@@ -99,7 +99,9 @@ public class LogParser {
         //System.out.println(statistics.getNotFound().size());
         //System.out.println(statistics.getNotFoundPaths(logEntries).size());
 
-        statistics.getMaxVisitsAtTheSec(statistics.getCountRequestAtTheOneSec());
+
+        System.out.println("Расчёта пиковой посещаемости сайта (в секунду): " +
+                statistics.getMaxVisitsAtTheSec(statistics.getCountRequestAtTheOneSec()));
 
 
       } catch (Exception ex) {

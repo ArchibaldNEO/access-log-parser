@@ -5,10 +5,7 @@ import lombok.Getter;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 
 @Getter
@@ -25,6 +22,7 @@ public class Statistics {
   private final HashSet<String> uniqueUsers = new HashSet<>();
   //private final HashMap<String, Integer> realUser = new HashMap<>();
   private final HashMap<LocalDateTime, Integer> countRequestAtTheOneSec = new HashMap<>();
+  //private final HashMap<String> domen = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -211,11 +209,17 @@ public class Statistics {
     return (double) countVisitRealUser / countRealUser;
   }
 
-  public int getMaxVisitsAtTheSec(HashMap<LocalDateTime, Integer> countRequestAtTheOneSec) {
+  public HashMap<LocalDateTime, Integer> getMaxVisitsAtTheSec(HashMap<LocalDateTime, Integer> countRequestAtTheOneSec) {
+    Set<Map.Entry<LocalDateTime, Integer>> entrySet = countRequestAtTheOneSec.entrySet();
+    HashMap<LocalDateTime, Integer> resultMap = new HashMap<>();
     ArrayList<Integer> integerArrayList = new ArrayList<>(countRequestAtTheOneSec.values());
-    System.out.println(integerArrayList);
-    System.out.println(integerArrayList.size());
-    return 0;
+
+    for (Map.Entry<LocalDateTime, Integer> pair : entrySet) {
+      if (integerArrayList.stream().max(Comparator.naturalOrder()).get().equals(pair.getValue())) {
+        resultMap.put(pair.getKey(), pair.getValue());
+      }
+    }
+    return resultMap;
   }
 
 
