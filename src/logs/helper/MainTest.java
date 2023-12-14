@@ -3,6 +3,7 @@ package logs.helper;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class MainTest {
@@ -49,6 +50,27 @@ public class MainTest {
 
     System.out.println(15771.0 / 191076);
 
+    String s111 = "https://rosinform.ru/mir/962716-tri-stsenariya-oranzhevoy-revolyutsii-v-rossii/";
+    String s1 = "https%3A%2F%2Fwww.rbc.ru&pathname=%2Fpolitics%2F27%2F10%2F2022%2F635a17849a7947739cc38755%3Ffrom%3Dfrom_main_1&project=rbc";
 
+
+    /*if (s1.contains("www.")) {
+      String[] str1 = s1.split("www.");
+      String[] str2 = str1[1].split(".ru");
+      System.out.println("www." + str2[0] + ".ru");
+    } else if (!s1.contains("www.")) {
+      String[] str1 = s1.split("://");
+      String[] str2 = str1[1].split("/");
+      System.out.println(str2[0]);
+    }*/
+
+
+    try {
+      String[] str1 = s1.split("://");
+      String[] str2 = str1[1].split("/");
+      System.out.println(str2[0]);
+    } catch (Exception x) {
+      System.out.println("Бля");
+    }
   }
 }

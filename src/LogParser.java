@@ -100,8 +100,10 @@ public class LogParser {
         //System.out.println(statistics.getNotFoundPaths(logEntries).size());
 
 
-        System.out.println("Расчёта пиковой посещаемости сайта (в секунду): " +
-                statistics.getMaxVisitsAtTheSec(statistics.getCountRequestAtTheOneSec()));
+        System.out.println("Расчёта пиковой посещаемости сайта (в секунду): " + statistics.getMaxVisitsAtTheSec(statistics.getCountRequestAtTheOneSec()));
+
+        System.out.println("Cписок сайтов, со страниц которых есть ссылки на текущий сайт: "
+                + statistics.getAllDomain(logEntries));
 
 
       } catch (Exception ex) {

@@ -22,7 +22,7 @@ public class Statistics {
   private final HashSet<String> uniqueUsers = new HashSet<>();
   //private final HashMap<String, Integer> realUser = new HashMap<>();
   private final HashMap<LocalDateTime, Integer> countRequestAtTheOneSec = new HashMap<>();
-  //private final HashMap<String> domen = new HashMap<>();
+  //private final HashSet<String> domain = new HashSet<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -222,5 +222,20 @@ public class Statistics {
     return resultMap;
   }
 
+  public HashSet<String> getAllDomain(ArrayList<LogEntry> logEntry) {
+    HashSet<String> set = new HashSet<>();
+    for (LogEntry entry : logEntry) {
+      if (!entry.getReferer().equals("-")) {
+        try {
+          String[] str1 = entry.getReferer().split("://");
+          String[] str2 = str1[1].split("/");
+          set.add(str2[0]);
+        } catch (Exception x) {
+          System.out.println("!!!!!! Не смог распарсить: " + entry.getReferer());
+        }
+      }
+    }
+    return set;
+  }
 
 }
