@@ -96,6 +96,8 @@ public class LogParser {
         System.out.println("Расчёта средней посещаемости одним пользователем: " +
                 statistics.getStaticVisitRealUsers(statistics.getVisitFromUsers(), statistics.getUniqueUsers().size()));
 
+        System.out.println(statistics.getNotFound().size());
+        System.out.println(statistics.getNotFoundPaths(logEntries).size());
 
       } catch (Exception ex) {
         ex.printStackTrace();

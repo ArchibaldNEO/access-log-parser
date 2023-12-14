@@ -98,6 +98,16 @@ public class Statistics {
     return (double) this.totalTraffic / hours;
   }
 
+  public HashSet<String> getNotFoundPaths(ArrayList<LogEntry> logEntries) {
+    HashSet<String> set = new HashSet<>();
+    for (LogEntry logEntry : logEntries) {
+      if (logEntry.getResponseCode() == 404) {
+        set.add(logEntry.getPath());
+      }
+    }
+    return set;
+  }
+
   public HashSet<String> getAlLPath(ArrayList<LogEntry> logEntries) {
     HashSet<String> set = new HashSet<>();
     for (LogEntry logEntry : logEntries) {
