@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -23,6 +24,7 @@ public class Statistics {
   private int countError = 0;
   private final HashSet<String> uniqueUsers = new HashSet<>();
   //private final HashMap<String, Integer> realUser = new HashMap<>();
+  private final HashMap<LocalDateTime, Integer> countRequestAtTheOneSec = new HashMap<>();
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -67,6 +69,11 @@ public class Statistics {
         realUser.put(logEntries.getIpAddress(), realUser.get(logEntries.getIpAddress()) + 1);
       } else
         realUser.put(logEntries.getIpAddress(), 1);*/
+
+      if (countRequestAtTheOneSec.containsKey(logEntries.getDateTime())) {
+        countRequestAtTheOneSec.put(logEntries.getDateTime(), countRequestAtTheOneSec.get(logEntries.getDateTime()) + 1);
+      } else
+        countRequestAtTheOneSec.put(logEntries.getDateTime(), 1);
     }
 
     if (logEntries.getResponseCode() <= 600 && logEntries.getResponseCode() >= 400) {
@@ -202,6 +209,13 @@ public class Statistics {
 
   public double getStaticVisitRealUsers(int countVisitRealUser, int countRealUser) {
     return (double) countVisitRealUser / countRealUser;
+  }
+
+  public int getMaxVisitsAtTheSec(HashMap<LocalDateTime, Integer> countRequestAtTheOneSec) {
+    ArrayList<Integer> integerArrayList = new ArrayList<>(countRequestAtTheOneSec.values());
+    System.out.println(integerArrayList);
+    System.out.println(integerArrayList.size());
+    return 0;
   }
 
 
