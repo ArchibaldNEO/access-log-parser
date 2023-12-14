@@ -1,19 +1,19 @@
 import logs.helper.LogEntry;
 import logs.helper.Statistics;
+import myself.exceptions.InvalidEmptyException;
+import myself.exceptions.InvalidStringLenghtException;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Scanner;
 
-public class LogParser {
+public class LogParserMain {
   public static void main(String[] args) {
     int count = 0;
 
     Statistics statistics = new Statistics();
-    HashSet<String> hashSet = new HashSet<>();
     ArrayList<LogEntry> logEntries = new ArrayList<>();
 
     while (true) {
@@ -36,7 +36,6 @@ public class LogParser {
         BufferedReader reader = new BufferedReader(fileReader);
         ArrayList<Integer> arrayList = new ArrayList<>();
 
-
         int GoogleBot = 0;
         int YandexBot = 0;
         int bot = 0;
@@ -53,12 +52,10 @@ public class LogParser {
           statistics.addEntry(logEntry);
           logEntries.add(logEntry);
 
-
           if (logEntry.getUserAgent().contains("Googlebot"))
             GoogleBot++;
           else if (logEntry.getUserAgent().contains("YandexBot"))
             YandexBot++;
-
 
           if (logEntry.getUserAgent().contains("bot"))
             bot++;
@@ -105,13 +102,14 @@ public class LogParser {
         System.out.println("Cписок сайтов, со страниц которых есть ссылки на текущий сайт: "
                 + statistics.getAllDomain(logEntries));
 
+        System.out.println("Расчёта максимальной посещаемости одним пользователем: " +
+                statistics.getMaxCountVisitOneUser(statistics.getRealUser()));
 
       } catch (Exception ex) {
         ex.printStackTrace();
       }
-//   /Users/askvortsov/Documents/Autotests_StepUP/master/access-log-parser/src/access.log
-
     }
   }
 }
+//   /Users/askvortsov/Documents/Autotests_StepUP/master/access-log-parser/src/data/files/access.log
 

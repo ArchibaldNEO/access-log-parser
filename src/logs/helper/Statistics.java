@@ -20,9 +20,9 @@ public class Statistics {
   private int visitFromUsers = 0;
   private int countError = 0;
   private final HashSet<String> uniqueUsers = new HashSet<>();
-  //private final HashMap<String, Integer> realUser = new HashMap<>();
+  private final HashMap<String, Integer> realUser = new HashMap<>();
   private final HashMap<LocalDateTime, Integer> countRequestAtTheOneSec = new HashMap<>();
-  //private final HashSet<String> domain = new HashSet<>();
+
 
   public Statistics() {
     this.totalTraffic = totalTraffic;
@@ -63,10 +63,10 @@ public class Statistics {
       visitFromUsers++;
       uniqueUsers.add(logEntries.getIpAddress());
 
-      /*if (realUser.containsKey(logEntries.getIpAddress())) {
+      if (realUser.containsKey(logEntries.getIpAddress())) {
         realUser.put(logEntries.getIpAddress(), realUser.get(logEntries.getIpAddress()) + 1);
       } else
-        realUser.put(logEntries.getIpAddress(), 1);*/
+        realUser.put(logEntries.getIpAddress(), 1);
 
       if (countRequestAtTheOneSec.containsKey(logEntries.getDateTime())) {
         countRequestAtTheOneSec.put(logEntries.getDateTime(), countRequestAtTheOneSec.get(logEntries.getDateTime()) + 1);
@@ -236,6 +236,19 @@ public class Statistics {
       }
     }
     return set;
+  }
+
+  public HashMap<String, Integer> getMaxCountVisitOneUser(HashMap<String, Integer> map) {
+    Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+    HashMap<String, Integer> resultMap = new HashMap<>();
+    ArrayList<Integer> integerArrayList = new ArrayList<>(map.values());
+
+    for (Map.Entry<String, Integer> pair : entrySet) {
+      if (integerArrayList.stream().max(Comparator.naturalOrder()).get().equals(pair.getValue())) {
+        resultMap.put(pair.getKey(), pair.getValue());
+      }
+    }
+    return resultMap;
   }
 
 }
