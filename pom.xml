@@ -61,8 +61,21 @@
             <version>5.3.2</version>
             <scope>test</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.16.1</version>
+        </dependency>
     </dependencies>
 
     <build>
