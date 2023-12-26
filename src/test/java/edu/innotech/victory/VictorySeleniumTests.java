@@ -1,6 +1,6 @@
-package edu.innotech;
+package edu.innotech.victory;
 
-import edu.innotech.pom.VictoryMainPage;
+import edu.innotech.pf.VictoryMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,8 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class VictorySeleniumTests {
 
@@ -25,12 +23,8 @@ public class VictorySeleniumTests {
     ChromeOptions options = new ChromeOptions();
     System.setProperty("webdriver.chrome.driver", "src/chromedriver");
     driver = new ChromeDriver(options);
-    //wait = new WebDriverWait(driver, Duration.ofMillis(40000));
-    //driver.manage().timeouts().implicitlyWait(40000, TimeUnit.MILLISECONDS);
-    //driver.manage().timeouts().pageLoadTimeout(40000, TimeUnit.MILLISECONDS);
     driver.get("https://pobeda.aero/");
     action = new Actions(driver);
-
   }
 
 
@@ -39,6 +33,7 @@ public class VictorySeleniumTests {
     VictoryMainPage victoryMainPage = new VictoryMainPage(driver);
 
     Assertions.assertEquals("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками", victoryMainPage.getTitlePage());
+
     Assertions.assertTrue(victoryMainPage.getLogo());
 
     action.moveToElement(victoryMainPage.info());

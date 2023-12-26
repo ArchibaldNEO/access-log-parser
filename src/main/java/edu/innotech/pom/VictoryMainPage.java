@@ -1,12 +1,14 @@
 package edu.innotech.pom;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class VictoryMainPage {
   WebDriver driver;
-  By logo = By.cssSelector("[alt=\"«Авиакомпания «Победа», Группа «Аэрофлот»\"]");
+  By logo = By.xpath("//*[@id=\"__next\"]/div/header/div[1]/div[2]/div[1]/div/div[1]");
   By info = By.cssSelector("[href=\"/information\"]");
   By infoFlight = By.cssSelector("[href=\"/information#flight\"]");
   By infoUseful = By.cssSelector("[href=\"/information#useful\"]");
