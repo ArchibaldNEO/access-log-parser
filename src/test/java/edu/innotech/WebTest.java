@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -30,9 +31,9 @@ public class WebTest {
     ChromeOptions options = new ChromeOptions();
     System.setProperty("webdriver.chrome.driver", "src/chromedriver");
     driver = new ChromeDriver(options);
-    wait = new WebDriverWait(driver, Duration.ofMillis(40000));
-    driver.manage().timeouts().implicitlyWait(40000, TimeUnit.MILLISECONDS);
-    driver.manage().timeouts().pageLoadTimeout(40000, TimeUnit.MILLISECONDS);
+    wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    //driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+    driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
   }
 
   @Test
@@ -65,11 +66,19 @@ public class WebTest {
     driver.findElement(By.cssSelector("[type=\"search\"]")).sendKeys(Keys.ENTER);
     driver.findElement(By.cssSelector(".LC20lb")).click();
 
+    wait.until(ExpectedConditions.
+            visibilityOfElementLocated
+                    (By.cssSelector("img[src=\"/_next/image?url=https%3A%2F%2Fsite-s3.pobeda.aero%3A443%2Fcms%2Fcms%2FSlider_Pobedanew_3840x800_OAE_e8dac59e51.jpg&w=3840&q=95\"]")));
+
     Assertions.assertEquals("Полетели в Дубай!",
-            driver.findElement(By.xpath("//*[@id=\"__next\"]/div[2]/main/div/div/div[1]/div/div[1]/button[3]/div[3]/div/div")).getText());
+            driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/div/div/div[1]/div/div[1]/button[4]/div[3]/div/div")).getText());
 
 
     driver.findElement(By.cssSelector(".dp-1c04wlv-root-root")).click();
+    wait.until(ExpectedConditions.
+            visibilityOfElementLocated
+                    (By.xpath("/html/body/div[4]/div/div/button[2]")));
+
     driver.findElement(By.xpath("/html/body/div[4]/div/div/button[2]")).click();
 
     Assertions.assertEquals("Ticket search",
