@@ -71,7 +71,7 @@ public class VictorySeleniumTests {
 
   @AfterAll
   public static void tearDown() {
-    //driver.quit();
+    driver.quit();
   }
 
 }
