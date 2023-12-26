@@ -18,6 +18,8 @@ public class VictorySeleniumTests {
   private static Actions action;
   private static WebDriverWait wait;
 
+  String title = "Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками";
+
   @BeforeAll
   public static void setUp() {
     ChromeOptions options = new ChromeOptions();
@@ -32,9 +34,9 @@ public class VictorySeleniumTests {
   public void firstVictory() {
     VictoryMainPage victoryMainPage = new VictoryMainPage(driver);
 
-    Assertions.assertEquals("Авиакомпания «Победа» - купить авиабилеты онлайн, дешёвые билеты на самолёт, прямые и трансферные рейсы с пересадками", victoryMainPage.getTitlePage());
+    Assertions.assertEquals(title, victoryMainPage.getTitlePage());
 
-    Assertions.assertTrue(victoryMainPage.getLogo());
+    Assertions.assertTrue(victoryMainPage.isDisplayedLogo());
 
     action.moveToElement(victoryMainPage.info());
     action.perform();
@@ -45,10 +47,31 @@ public class VictorySeleniumTests {
 
   }
 
+  @Test
+  public void secondVictory() {
+    VictoryMainPage victoryMainPage = new VictoryMainPage(driver);
+
+    Assertions.assertEquals(title, victoryMainPage.getTitlePage());
+
+    Assertions.assertTrue(victoryMainPage.isDisplayedLogo());
+
+    Assertions.assertTrue(victoryMainPage.isDisplayedFrom());
+    Assertions.assertTrue(victoryMainPage.isDisplayedTo());
+    Assertions.assertTrue(victoryMainPage.isDisplayedFromDate());
+    Assertions.assertTrue(victoryMainPage.isDisplayedToDate());
+
+    victoryMainPage.setFrom("Москва");
+    victoryMainPage.setTo("Санкт-Петербург");
+
+    victoryMainPage.clickSearch();
+
+
+  }
+
 
   @AfterAll
   public static void tearDown() {
-    driver.quit();
+    //driver.quit();
   }
 
 }

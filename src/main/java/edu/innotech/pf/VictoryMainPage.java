@@ -1,6 +1,7 @@
 package edu.innotech.pf;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,24 @@ public class VictoryMainPage {
   @FindBy(css = "[href=\"/information#company\"]")
   WebElement infoCompany;
 
+  @FindBy(css = "[placeholder=\"Откуда\"]")
+  WebElement from;
+
+  @FindBy(css = ".dp-eptrrl-root")
+  WebElement firstVariant;
+
+  @FindBy(css = "[placeholder=\"Куда\"]")
+  WebElement to;
+
+  @FindBy(css = "[placeholder=\"Туда\"]")
+  WebElement fromDate;
+
+  @FindBy(css = "[placeholder=\"Обратно\"]")
+  WebElement toDate;
+
+  @FindBy(css = ".dp-ew66p9-root-root")
+  WebElement search;
+
 
   public VictoryMainPage(WebDriver driver) {
     this.driver = driver;
@@ -34,7 +53,7 @@ public class VictoryMainPage {
     return driver.getTitle();
   }
 
-  public Boolean getLogo() {
+  public Boolean isDisplayedLogo() {
     return logo.isDisplayed();
   }
 
@@ -52,6 +71,41 @@ public class VictoryMainPage {
 
   public String getInfoCompany() {
     return infoCompany.getText();
+  }
+
+  public boolean isDisplayedFrom() {
+    return from.isDisplayed();
+  }
+
+  public boolean isDisplayedTo() {
+    return to.isDisplayed();
+  }
+
+  public boolean isDisplayedFromDate() {
+    return fromDate.isDisplayed();
+  }
+
+  public boolean isDisplayedToDate() {
+    return toDate.isDisplayed();
+  }
+
+  public void setFrom(String text) {
+    from.sendKeys(text);
+    firstVariant.click();
+  }
+
+  public void setTo(String text) {
+    to.sendKeys(text);
+    firstVariant.click();
+  }
+
+  public void clickSearch() {
+    try {
+      search.click();
+    } catch (Exception ex) {
+      System.out.println("Кнопка " + search.getText() + " некликабельная");
+    }
+
   }
 
 }
