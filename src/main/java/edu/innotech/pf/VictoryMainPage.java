@@ -43,6 +43,20 @@ public class VictoryMainPage {
   @FindBy(css = ".dp-ew66p9-root-root")
   WebElement search;
 
+  @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[1]/div[2]/button[3]")
+  WebElement manageBooking;
+
+  @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[2]/form/div/div[1]/div[1]/div/input")
+  WebElement secondNameClient;
+
+  @FindBy(css = "[placeholder=\"Номер заказа или билета\"]")
+  WebElement numberOrder;
+
+  @FindBy(css = ".dp-1dtx37h-root-root")
+  WebElement searchInManageBooking;
+
+  @FindBy(xpath = "//*[@id=\"__next\"]/div[2]/main/div/div/div[2]/div/div[2]/form/div/div[2]/div[1]/div[2]")
+  WebElement orderNotFound;
 
   public VictoryMainPage(WebDriver driver) {
     this.driver = driver;
@@ -106,6 +120,49 @@ public class VictoryMainPage {
       System.out.println("Кнопка " + search.getText() + " некликабельная");
     }
 
+  }
+
+  public void clickManageBooking() {
+    try {
+      manageBooking.click();
+    } catch (Exception ex) {
+      System.out.println("Кнопка " + manageBooking.getText() + " некликабельная");
+    }
+
+  }
+
+
+  public void setSecondNameClient(String text) {
+    secondNameClient.sendKeys(text);
+  }
+
+  public void setNumberOrder(String text) {
+    numberOrder.sendKeys(text);
+  }
+
+  public void clickSearchInManageBooking() {
+    try {
+      searchInManageBooking.click();
+    } catch (Exception ex) {
+      System.out.println("Кнопка " + searchInManageBooking.getText() + " некликабельная");
+    }
+
+  }
+
+  public boolean isDisplayedSecondNameClient() {
+    return secondNameClient.isDisplayed();
+  }
+
+  public boolean isDisplayedNumberOrder() {
+    return numberOrder.isDisplayed();
+  }
+
+  public boolean isDisplayedSearchInManageBooking() {
+    return searchInManageBooking.isDisplayed();
+  }
+
+  public String getOrderNotFound() {
+    return orderNotFound.getText();
   }
 
 }

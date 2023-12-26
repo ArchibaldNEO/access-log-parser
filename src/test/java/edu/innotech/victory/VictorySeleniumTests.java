@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class VictorySeleniumTests {
 
@@ -27,6 +29,8 @@ public class VictorySeleniumTests {
     driver = new ChromeDriver(options);
     driver.get("https://pobeda.aero/");
     action = new Actions(driver);
+    driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+    driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
   }
 
 
@@ -64,6 +68,28 @@ public class VictorySeleniumTests {
     victoryMainPage.setTo("Санкт-Петербург");
 
     victoryMainPage.clickSearch();
+
+  }
+
+  @Test
+  public void thirdVictory() {
+    VictoryMainPage victoryMainPage = new VictoryMainPage(driver);
+
+    Assertions.assertEquals(title, victoryMainPage.getTitlePage());
+
+    Assertions.assertTrue(victoryMainPage.isDisplayedLogo());
+
+    victoryMainPage.clickManageBooking();
+
+    victoryMainPage.isDisplayedSecondNameClient();
+    victoryMainPage.isDisplayedNumberOrder();
+    victoryMainPage.isDisplayedSearchInManageBooking();
+
+    victoryMainPage.setSecondNameClient("XXXXXX");
+    victoryMainPage.setNumberOrder("Qwerty");
+    victoryMainPage.clickSearchInManageBooking();
+
+    Assertions.assertEquals("Некорректный номер", victoryMainPage.getOrderNotFound());
 
 
   }
