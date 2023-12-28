@@ -2,11 +2,10 @@ package edu.innotech.jdbc;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Service {
   public static void main(String[] args) {
-    //createDBstatement();
-    //createDBprepareStatement();
     firstTask();
   }
 
@@ -51,6 +50,27 @@ public class Service {
                 + " " + rs3.getString("Department.Name"));
       }
       System.out.println("-----------------------");
+
+
+      ResultSet rs4 = statement.executeQuery("Select * from Employee");
+      int count = 0;
+      StringBuilder upName = new StringBuilder();
+      int id = 0;
+      while (rs4.next()) {
+        char[] chars = rs4.getString("name").toCharArray();
+
+        if (Character.isLowerCase(chars[0])) {
+          count++;;
+          chars[0] = Character.toUpperCase(chars[0]);
+          for (int i = 0; i < chars.length; i++) {
+            upName.append(chars[i]);
+          }
+          id = rs4.getInt("ID");
+        }
+      }
+      statement.executeUpdate("UPDATE employee SET name=" + "\'" + upName + "\'" + " where id =" + id);
+
+      System.out.println("Количество исправленных имён: " + count);
 
     } catch (SQLException ex) {
       System.out.println(ex);
