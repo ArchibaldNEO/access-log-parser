@@ -54,23 +54,45 @@ public class Service {
 
       ResultSet rs4 = statement.executeQuery("Select * from Employee");
       int count = 0;
-      StringBuilder upName = new StringBuilder();
-      int id = 0;
+
+
+      ArrayList<String> stringArrayList = new ArrayList<>();
+      ArrayList<Integer> integers = new ArrayList<>();
+
       while (rs4.next()) {
+        StringBuilder upName = new StringBuilder();
+
         char[] chars = rs4.getString("name").toCharArray();
 
         if (Character.isLowerCase(chars[0])) {
-          count++;;
+          count++;
+
           chars[0] = Character.toUpperCase(chars[0]);
-          for (int i = 0; i < chars.length; i++) {
-            upName.append(chars[i]);
+          for (char aChar : chars) {
+            upName.append(aChar);
           }
-          id = rs4.getInt("ID");
+
+          stringArrayList.add(String.valueOf(upName));
+          integers.add(rs4.getInt("ID"));
         }
       }
-      statement.executeUpdate("UPDATE employee SET name=" + "\'" + upName + "\'" + " where id =" + id);
+
+
+      for (int i = 0; i < stringArrayList.size(); i++) {
+        statement.executeUpdate("UPDATE employee SET name=" + "\'" + stringArrayList.get(i) + "\'" + " where id =" + integers.get(i));
+      }
+
 
       System.out.println("Количество исправленных имён: " + count);
+
+      ResultSet rs5 = statement.executeQuery("Select * from Employee where departmentID in (select id from department where name = \'IT\') ");
+
+      int count1 = 0;
+      while (rs5.next()) {
+        count1++;
+      }
+
+      System.out.println("Количество сотрудников в IT-отделе: " + count1);
 
     } catch (SQLException ex) {
       System.out.println(ex);
